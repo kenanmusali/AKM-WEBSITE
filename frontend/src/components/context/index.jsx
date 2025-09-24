@@ -36,9 +36,6 @@ const CustomContextMenu = ({ children }) => {
 
   const handleCut = () => {
     navigator.clipboard.writeText(selectedText).then(() => {
-      // Remove the selected text from its original location
-      // You'll need to implement this part based on your application's state management
-      // For example, if it's in a contentEditable or input field:
       document.execCommand('cut');
 
       setMenuVisible(false);

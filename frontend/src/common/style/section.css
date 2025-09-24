@@ -1205,6 +1205,13 @@ box-shadow: var(--main-shadow);
 }
 
 /* Responsive adjustments */
+@media (min-width: 1024px) {
+    .popup-content {
+                display: flex;
+    justify-content: center;
+    }
+}
+/* Responsive adjustments */
 @media (max-width: 1024px) {
     .expanded-card-image .expanded-card-image-main {
         box-shadow: var(--main-shadow);
@@ -1407,6 +1414,7 @@ box-shadow: var(--main-shadow);
     width: 100%;
     height: calc(100% - 95px);
     position: relative;
+
     box-shadow: var(--main-shadow);
     overflow-y: auto;
 }
@@ -1423,8 +1431,12 @@ box-shadow: var(--main-shadow);
 }
 
 .popup-container {
+        display: flex;
+    align-self: center;
     display: flex;
     gap: 30px;
+    max-width: 1300px;
+    width: 100%;
 }
 
 .job-details {

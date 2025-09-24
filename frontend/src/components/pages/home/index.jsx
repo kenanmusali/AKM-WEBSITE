@@ -13,16 +13,17 @@ import Values from '../../elements/values'
 const Home = () => {
     return (
         <div className="Layout-Group">
-            <Header />
-            <Values/>
-            <div id="about">
+            {/* <Header /> */}<div id="about">
                 <Info />
             </div>
+            {/* <Values/> */}
+            
             <Admission />
-            <Advantages />
             <div id="careers">
                 <Vacancies />
             </div>
+            <Advantages />
+      
             <div id="activities">
                 <Activity />
             </div>
