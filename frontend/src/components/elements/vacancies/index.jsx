@@ -3,12 +3,12 @@ import ArrayData1Img from '../../../assets/svg/person.2.svg';
 import ArrayData1Svg from '../../../assets/svg/calendar.svg';
 import ArrayData0Svg from '../../../assets/svg/clock.svg';
 import ArrayData2Svg from '../../../assets/svg/location.svg';
+import ArrayData3Svg from '../../../assets/svg/suitcase.svg';
 import SortColumnImage from '../../../assets/svg/slider.horizontal.below.rectangle.svg';
 import SortRowImage from '../../../assets/svg/slider.horizontal.below.square.fill.and.square.svg';
 import ClockImage from '../../../assets/svg/clock.arrow.circlepath.svg';
 import CloseImage from '../../../assets/svg/close.bubble.svg';
 import EyeImage from '../../../assets/svg/eye.svg';
-
 
 const Vacancies = () => {
     const [isColumnLayout, setIsColumnLayout] = useState(true);
@@ -30,32 +30,62 @@ const Vacancies = () => {
     const [itemsToShow, setItemsToShow] = useState(10);
     const [jobDescriptions, setJobDescriptions] = useState({});
     const [isLoading, setIsLoading] = useState(true);
+    const [originalArrayData, setOriginalArrayData] = useState([]);
 
-    const originalArrayData = [
-        { id: 0,  image: ArrayData1Img,  title: 'Abşeron Logistika Mərkəzi Ümumi CV bazasına müraciət', descriptionKey: 'ResumeDatabase' },
-        { id: 1, EyeImage:EyeImage, view: '480', image: ArrayData1Img, title: 'IT Helpdesk (Texnik)', expireDateImage: ArrayData0Svg, expireDate: 'Oktyabr 1, 2026', dateImage: ArrayData1Svg, date: 'Sentyabr 1, 2024', locationImage: ArrayData2Svg, location: 'Baku, Azerbaijan', link: 'https://jobs.glorri.az/vacancies/absheronport/absheronport-inzibatilesdirme-uzre-kicik-mutexessis-43581?isLocal=true', descriptionKey: 'ITHelpdesk' },
-        { id: 2, EyeImage:EyeImage, view: '530', image: ArrayData1Img, title: 'Kran operatoru', expireDateImage: ArrayData0Svg, expireDate: 'Oktyabr 1, 2026', dateImage: ArrayData1Svg, date: 'Sentyabr 1, 2023', locationImage: ArrayData2Svg, location: 'Baku, Azerbaijan', link: 'https://www.jobsearch.az/vacancies/abseron-logistika-merkezi-marketinq-ve-ictimaiyyetle-elaqeler-uzre-aparici-mutexessis-116325', descriptionKey: 'CraneOperator' },
-        { id: 3, EyeImage:EyeImage, view: '390', image: ArrayData1Img, title: 'Sistem əməliyyatlarına nəzarət üzrə mütəxəssis', expireDateImage: ArrayData1Svg, expireDate: 'Oktyabr 1, 2026', dateImage: ArrayData1Svg, date: 'Sentyabr 1, 2024', locationImage: ArrayData2Svg, location: 'Baku, Azerbaijan', link: 'https://jobs.glorri.az/vacancies/absheronport/absheronport-hesabatliq-uzre-mutexessis-26775?isLocal=true', descriptionKey: 'ControlSpecialist' },
-        { id: 4, EyeImage:EyeImage, view: '296', image: ArrayData1Img, title: 'Tır sürücüsü', expireDateImage: ArrayData0Svg, expireDate: 'Oktyabr 1, 2026', dateImage: ArrayData1Svg, date: 'Sentyabr 1, 2024', locationImage: ArrayData2Svg, location: 'Baku, Azerbaijan', link: 'https://jobs.glorri.az/vacancies/absheronport/absheronport-maliyyə-uzre-mutexessis-26775?isLocal=true', descriptionKey: 'TruckDriver' },
-        { id: 5, EyeImage:EyeImage, view: '489', image: ArrayData1Img, title: 'Analitik təhlil üzrə mütəxəssis', expireDateImage: ArrayData0Svg, expireDate: 'Oktyabr 1, 2026', dateImage: ArrayData1Svg, date: 'Sentyabr 1, 2024', locationImage: ArrayData2Svg, location: 'Baku, Azerbaijan', link: 'https://jobs.glorri.az/vacancies/absheronport/absheronport-it-uzre-mutexessis-26775?isLocal=true', descriptionKey: 'AnalysisSpecialist' },
-        { id: 6, EyeImage:EyeImage, view: '449', image: ArrayData1Img, title: 'Avtoyükləyici (avtokar, elektrokar) ', expireDateImage: ArrayData0Svg, expireDate: 'Oktyabr 1, 2026', dateImage: ArrayData1Svg, date: 'Sentyabr 1, 2024', locationImage: ArrayData2Svg, location: 'Baku, Azerbaijan', link: 'https://jobs.glorri.az/vacancies/absheronport/absheronport-huquqshunas-26775?isLocal=true', descriptionKey: 'CarCharger' },
-        { id: 7, EyeImage:EyeImage, view: '308', image: ArrayData1Img, title: 'Beynəlxalq daşıma əməliyyatları üzrə mütəxəssis', expireDateImage: ArrayData0Svg, expireDate: 'Oktyabr 1, 2026', dateImage: ArrayData1Svg, date: 'Sentyabr 1, 2025', locationImage: ArrayData2Svg, location: 'Baku, Azerbaijan', link: 'https://jobs.glorri.az/vacancies/absheronport/absheronport-kadrlarr-uzre-mutexessis-26775?isLocal=true', descriptionKey: 'TransportSpecialist' },
-        { id: 8, EyeImage:EyeImage, view: '487', image: ArrayData1Img, title: 'Elektrik montyoru', dateImage: ArrayData1Svg, expireDateImage: ArrayData0Svg, date: 'Sentyabr 1, 2025', expireDate: 'Oktyabr 1, 2026', locationImage: ArrayData2Svg, location: 'Baku, Azerbaijan', link: 'https://jobs.glorri.az/vacancies/absheronport/absheronport-is-tklif-uzre-mutexessis-26775?isLocal=true', descriptionKey: 'Electrician' },
-        { id: 9, EyeImage:EyeImage, view: '286', image: ArrayData1Img, title: 'Hesabatlıq üzrə mütəxəssis', dateImage: ArrayData1Svg, expireDateImage: ArrayData0Svg, date: 'Sentyabr 1, 2025', expireDate: 'Oktyabr 1, 2026', locationImage: ArrayData2Svg, location: 'Baku, Azerbaijan', link: 'https://jobs.glorri.az/vacancies/absheronport/absheronport-is-tklif-uzre-mutexessis-26775?isLocal=true', descriptionKey: 'ReportingSpecialist' },
-        { id: 10, EyeImage:EyeImage, view: '374', image: ArrayData1Img, title: 'İnzibatiləşdirmə üzrə kiçik mütəxəssis', dateImage: ArrayData1Svg, expireDateImage: ArrayData0Svg, date: 'Sentyabr 1, 2025', expireDate: 'Oktyabr 1, 2026', locationImage: ArrayData2Svg, location: 'Baku, Azerbaijan', link: 'https://jobs.glorri.az/vacancies/absheronport/absheronport-is-tklif-uzre-mutexessis-26775?isLocal=true', descriptionKey: 'JRAdministrativeSpecialist' }
+    // Fetch career data from GitHub
+    useEffect(() => {
+        const fetchCareerData = async () => {
+            try {
+                const response = await fetch('https://raw.githubusercontent.com/Absheron-Career-Portal/storage/refs/heads/main/src/data/career.json');
+                const data = await response.json();
+                
+                // Transform the data to match your component's structure
+                const transformedData = data.map(item => ({
+                    id: item.id,
+                    EyeImage: EyeImage,
+                    view: item.view?.toString() || '0',
+                    image: ArrayData1Img,
+                    title: item.title,
+                    expireDateImage: ArrayData0Svg,
+                    expireDate: item.expireDate,
+                    dateImage: ArrayData1Svg,
+                    date: item.date,
+                    locationImage: ArrayData2Svg,
+                    location: item.location,
+                    type: item.type,
+                    typeImage: ArrayData3Svg,
+                    descriptionKey: item.description ? item.description.split('/').pop().replace('.txt', '') : '',
+                    link: item.link || '#'
+                }));
 
-    ];
+                setOriginalArrayData(transformedData);
+                setDisplayedData(transformedData.slice(0, itemsToShow));
+            } catch (error) {
+                console.error('Error fetching career data:', error);
+                setIsLoading(false);
+            }
+        };
 
+        fetchCareerData();
+    }, []);
+
+    // Load job descriptions
     useEffect(() => {
         const loadJobDescriptions = async () => {
+            if (originalArrayData.length === 0) return;
+
             try {
                 const descriptions = {};
 
                 for (const job of originalArrayData) {
                     try {
-                        const response = await import(`../../../assets/docs/${job.descriptionKey}.txt`);
-                        const text = await fetch(response.default).then(res => res.text());
-                        descriptions[job.id] = text;
+                        if (job.descriptionKey) {
+                            const response = await import(`../../../assets/docs/${job.descriptionKey}.txt`);
+                            const text = await fetch(response.default).then(res => res.text());
+                            descriptions[job.id] = text;
+                        } else {
+                            descriptions[job.id] = "Description not available.";
+                        }
                     } catch (error) {
                         console.error(`Error loading description for ${job.descriptionKey}:`, error);
                         descriptions[job.id] = "Description not available.";
@@ -71,7 +101,7 @@ const Vacancies = () => {
         };
 
         loadJobDescriptions();
-    }, []);
+    }, [originalArrayData]);
 
     // Function to check if a job is expired
     const isJobExpired = (job) => {
@@ -85,7 +115,10 @@ const Vacancies = () => {
         };
 
         const parseDate = (dateStr) => {
-            const [monthStr, day, year] = dateStr.replace(',', '').split(' ');
+            const parts = dateStr.replace(',', '').split(' ');
+            if (parts.length < 3) return new Date();
+            
+            const [day, monthStr, year] = parts;
             const month = monthNames[monthStr];
             return new Date(year, month - 1, day);
         };
@@ -96,11 +129,6 @@ const Vacancies = () => {
 
         return expireDate < today;
     };
-
-    useEffect(() => {
-        // Initialize displayed data with limited items
-        setDisplayedData(originalArrayData.slice(0, itemsToShow));
-    }, []);
 
     useEffect(() => {
         if (showPopup) {
@@ -119,14 +147,15 @@ const Vacancies = () => {
     };
 
     const toggleSortByDate = () => {
+        if (originalArrayData.length === 0) return;
+
         if (isSortedByDate) {
             setDisplayedData(originalArrayData.slice(0, itemsToShow));
             setIsSortedByDate(false);
         } else {
-            const firstItem = originalArrayData[0]; // The item with id: 0
-            const otherItems = originalArrayData.slice(1); // All other items
+            const firstItem = originalArrayData.find(item => item.id === 0) || originalArrayData[0];
+            const otherItems = originalArrayData.filter(item => item.id !== 0);
 
-            // Convert dates to a sortable format
             const monthNames = {
                 'Yanvar': 1, 'Fevral': 2, 'Mart': 3, 'Aprel': 4, 'May': 5, 'Iyun': 6,
                 'Iyul': 7, 'Avqust': 8, 'Sentyabr': 9, 'Oktyabr': 10, 'Noyabr': 11, 'Dekabr': 12,
@@ -138,7 +167,10 @@ const Vacancies = () => {
                 if (!a.date || !b.date) return 0;
 
                 const parseDate = (dateStr) => {
-                    const [monthStr, day, year] = dateStr.replace(',', '').split(' ');
+                    const parts = dateStr.replace(',', '').split(' ');
+                    if (parts.length < 3) return new Date();
+                    
+                    const [day, monthStr, year] = parts;
                     const month = monthNames[monthStr];
                     return new Date(year, month - 1, day);
                 };
@@ -154,49 +186,61 @@ const Vacancies = () => {
     };
 
     const toggleShowAll = () => {
+        if (originalArrayData.length === 0) return;
+
         if (showAll) {
             setDisplayedData(isSortedByDate ?
-                [originalArrayData[0], ...originalArrayData.slice(1).sort((a, b) => {
-                    if (!isSortedByDate) return 0;
+                [originalArrayData.find(item => item.id === 0) || originalArrayData[0], 
+                 ...originalArrayData.filter(item => item.id !== 0)
+                    .sort((a, b) => {
+                        if (!isSortedByDate) return 0;
 
-                    const monthNames = {
-                        'Yanvar': 1, 'Fevral': 2, 'Mart': 3, 'Aprel': 4, 'May': 5, 'Iyun': 6,
-                        'Iyul': 7, 'Avqust': 8, 'Sentyabr': 9, 'Oktyabr': 10, 'Noyabr': 11, 'Dekabr': 12,
-                        'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June': 6,
-                        'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12
-                    };
+                        const monthNames = {
+                            'Yanvar': 1, 'Fevral': 2, 'Mart': 3, 'Aprel': 4, 'May': 5, 'Iyun': 6,
+                            'Iyul': 7, 'Avqust': 8, 'Sentyabr': 9, 'Oktyabr': 10, 'Noyabr': 11, 'Dekabr': 12,
+                            'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June': 6,
+                            'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12
+                        };
 
-                    const parseDate = (dateStr) => {
-                        const [monthStr, day, year] = dateStr.replace(',', '').split(' ');
-                        const month = monthNames[monthStr];
-                        return new Date(year, month - 1, day);
-                    };
+                        const parseDate = (dateStr) => {
+                            const parts = dateStr.replace(',', '').split(' ');
+                            if (parts.length < 3) return new Date();
+                            
+                            const [day, monthStr, year] = parts;
+                            const month = monthNames[monthStr];
+                            return new Date(year, month - 1, day);
+                        };
 
-                    return parseDate(b.date) - parseDate(a.date);
-                }).slice(0, itemsToShow - 1)] :
+                        return parseDate(b.date) - parseDate(a.date);
+                    }).slice(0, itemsToShow - 1)] :
                 originalArrayData.slice(0, itemsToShow)
             );
         } else {
             // Show all items
             setDisplayedData(isSortedByDate ?
-                [originalArrayData[0], ...originalArrayData.slice(1).sort((a, b) => {
-                    if (!isSortedByDate) return 0;
+                [originalArrayData.find(item => item.id === 0) || originalArrayData[0], 
+                 ...originalArrayData.filter(item => item.id !== 0)
+                    .sort((a, b) => {
+                        if (!isSortedByDate) return 0;
 
-                    const monthNames = {
-                        'Yanvar': 1, 'Fevral': 2, 'Mart': 3, 'Aprel': 4, 'May': 5, 'Iyun': 6,
-                        'Iyul': 7, 'Avqust': 8, 'Sentyabr': 9, 'Oktyabr': 10, 'Noyabr': 11, 'Dekabr': 12,
-                        'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June': 6,
-                        'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12
-                    };
+                        const monthNames = {
+                            'Yanvar': 1, 'Fevral': 2, 'Mart': 3, 'Aprel': 4, 'May': 5, 'Iyun': 6,
+                            'Iyul': 7, 'Avqust': 8, 'Sentyabr': 9, 'Oktyabr': 10, 'Noyabr': 11, 'Dekabr': 12,
+                            'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June': 6,
+                            'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12
+                        };
 
-                    const parseDate = (dateStr) => {
-                        const [monthStr, day, year] = dateStr.replace(',', '').split(' ');
-                        const month = monthNames[monthStr];
-                        return new Date(year, month - 1, day);
-                    };
+                        const parseDate = (dateStr) => {
+                            const parts = dateStr.replace(',', '').split(' ');
+                            if (parts.length < 3) return new Date();
+                            
+                            const [day, monthStr, year] = parts;
+                            const month = monthNames[monthStr];
+                            return new Date(year, month - 1, day);
+                        };
 
-                    return parseDate(b.date) - parseDate(a.date);
-                })] :
+                        return parseDate(b.date) - parseDate(a.date);
+                    })] :
                 originalArrayData
             );
         }
@@ -336,12 +380,18 @@ const Vacancies = () => {
                                                 <p>{item.location}</p>
                                             </div>
                                         )}
-                                        {item.location && (
+                                        {item.view && (
                                             <div className="Cards-Item-Bio">
-                                                <img src={item.EyeImage} className='No-Select' alt="Location" />
+                                                <img src={item.EyeImage} className='No-Select' alt="Views" />
                                                 <p>{item.view}</p>
                                             </div>
                                         )}
+                                        {/* {item.type && (
+                                            <div className="Cards-Item-Bio">
+                                                <img src={item.typeImage} className='No-Select' alt="Job Type" />
+                                                <p>{item.type}</p>
+                                            </div>
+                                        )} */}
 
                                     </span>
                                     <div className="Classic-Button">
@@ -395,10 +445,15 @@ const Vacancies = () => {
                                                 <img src={selectedJob.locationImage} alt="Location" />
                                                 <span>{selectedJob.location}</span>
                                             </div>
+                                            {selectedJob.type && (
+                                                <div className="info-item">
+                                                    <img src={selectedJob.typeImage} alt="Job Type" />
+                                                    <span>{selectedJob.type}</span>
+                                                </div>
+                                            )}
                                         </div>
                                         <div className="job-description">
                                             <p style={{ whiteSpace: 'pre-line' }}>{jobDescriptions[selectedJob.id]}</p>
-                                            {/* <a href={selectedJob.link} target="_blank" rel="noopener noreferrer">Tam vakansiya təsvirinə bax</a> */}
                                         </div>
                                     </>
                                 )}

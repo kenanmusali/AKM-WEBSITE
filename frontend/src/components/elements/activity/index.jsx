@@ -19,7 +19,7 @@ const Activity = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://raw.githubusercontent.com/Absheron-Career-Portal/storage/main/json/activity.json');
+        const response = await fetch('https://raw.githubusercontent.com/Absheron-Career-Portal/storage/refs/heads/main/src/data/activity.json');
         const data = await response.json();
         setArrayData(data); 
       } catch (error) {
