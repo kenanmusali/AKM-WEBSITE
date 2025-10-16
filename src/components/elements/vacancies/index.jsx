@@ -140,7 +140,7 @@ const Vacancies = () => {
                 const monthNames = {
                     'Yanvar': 1, 'Fevral': 2, 'Mart': 3, 'Aprel': 4, 'May': 5, 'Iyun': 6,
                     'Iyul': 7, 'Avqust': 8, 'Sentyabr': 9, 'Oktyabr': 10, 'Noyabr': 11, 'Dekabr': 12,
-                    'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June': 6,
+                    'January': 1, 'February': 2, 'March': 3, 'April': 4, 'Mays': 5, 'June': 6,
                     'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12
                 };
 
@@ -187,7 +187,7 @@ const Vacancies = () => {
         const monthNames = {
             'Yanvar': 1, 'Fevral': 2, 'Mart': 3, 'Aprel': 4, 'May': 5, 'Iyun': 6,
             'Iyul': 7, 'Avqust': 8, 'Sentyabr': 9, 'Oktyabr': 10, 'Noyabr': 11, 'Dekabr': 12,
-            'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June': 6,
+            'January': 1, 'February': 2, 'March': 3, 'April': 4, 'Mays': 5, 'June': 6,
             'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12
         };
 
@@ -236,7 +236,7 @@ const Vacancies = () => {
             const monthNames = {
                 'Yanvar': 1, 'Fevral': 2, 'Mart': 3, 'Aprel': 4, 'May': 5, 'Iyun': 6,
                 'Iyul': 7, 'Avqust': 8, 'Sentyabr': 9, 'Oktyabr': 10, 'Noyabr': 11, 'Dekabr': 12,
-                'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June': 6,
+                'January': 1, 'February': 2, 'March': 3, 'April': 4, 'Mays': 5, 'June': 6,
                 'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12
             };
 
@@ -291,7 +291,7 @@ const Vacancies = () => {
                         const monthNames = {
                             'Yanvar': 1, 'Fevral': 2, 'Mart': 3, 'Aprel': 4, 'May': 5, 'Iyun': 6,
                             'Iyul': 7, 'Avqust': 8, 'Sentyabr': 9, 'Oktyabr': 10, 'Noyabr': 11, 'Dekabr': 12,
-                            'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June': 6,
+                            'January': 1, 'February': 2, 'March': 3, 'April': 4, 'Mays': 5, 'June': 6,
                             'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12
                         };
 
@@ -318,7 +318,7 @@ const Vacancies = () => {
                         const monthNames = {
                             'Yanvar': 1, 'Fevral': 2, 'Mart': 3, 'Aprel': 4, 'May': 5, 'Iyun': 6,
                             'Iyul': 7, 'Avqust': 8, 'Sentyabr': 9, 'Oktyabr': 10, 'Noyabr': 11, 'Dekabr': 12,
-                            'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June': 6,
+                            'January': 1, 'February': 2, 'March': 3, 'April': 4, 'Mays': 5, 'June': 6,
                             'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12
                         };
 
