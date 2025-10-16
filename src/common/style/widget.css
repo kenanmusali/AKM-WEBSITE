@@ -1,0 +1,43 @@
+.editorim-sidebox-open, .editorim-sidebox-open:hover:active {
+    box-sizing: border-box;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    display: block;
+    background: var(--primary-color) !important;
+    color: #fff !important;
+    font-size: 30px;
+    text-align: center;
+    border-radius: 5000px !important;
+    border: 3px solid #fff;
+    position: fixed;
+    padding: 0;
+    bottom: var(--safe-place) !important;
+    left: var(--safe-place) !important;
+    z-index: 65901;
+    cursor: pointer;
+    transition: 0.3s box-shadow, 0.3s transform;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1), 2px 2px 3px rgba(0, 0, 0, 0.1), 2px 4px 8px rgba(0, 0, 0, 0.1), 0 2px 50px 0 rgba(0, 0, 0, 0.2);
+    border-color: transparent;
+    border-radius: 50% 5% 50% 50%;
+    transform: scale(1);
+}
+
+.editorim-sidebox {
+    z-index: 55555001;
+    border-radius: 10px;
+    box-shadow: 0 .46875rem 2.1875rem rgba(0, 0, 0, .1), 0 .9375rem 1.40625rem rgba(0, 0, 0, .1), 0 .25rem .53125rem rgba(0, 0, 0, .12), 0 .125rem .1875rem rgba(0, 0, 0, .1);
+    background: #fff;
+    position: fixed;
+    font-size: 14px;
+    line-height: 20px;
+    bottom: 10px !important;
+    top: 10px !important;
+    left: 10px !important;
+    width: 420px !important;
+    display: none;
+}
+
+.editorim-sidebox-footer {
+    display: none !important;
+}

@@ -1825,7 +1825,7 @@ border: 1px solid var(--primary-color);
 }
 
 .Section-Card-Grid-container .animated-1:hover a {
-    color: var(--primary-color);
+    color: var(--white-color);
 }
 
 .Section-Card-Grid-container .animated-1:hover {
