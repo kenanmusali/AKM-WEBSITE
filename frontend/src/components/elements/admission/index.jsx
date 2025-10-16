@@ -47,14 +47,16 @@ const Admission = () => {
         setItemsPerPage(4);
       } else if (width < 1100) {
         setItemsPerPage(5);
-      } else if (width < 1200) {
+      } else if (width < 1500) {
         setItemsPerPage(6);
+      } else if (width < 1625) {
+        setItemsPerPage(7);
       } else {
         setItemsPerPage(8);
       }
 
 
-      setShouldHideNav(ArrayData.length === 8 && width >= 1200);
+      setShouldHideNav(ArrayData.length === 8 && width >= 1625);
     };
 
     handleResize();

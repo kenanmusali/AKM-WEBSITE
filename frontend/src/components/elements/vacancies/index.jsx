@@ -9,6 +9,7 @@ import SortRowImage from '../../../assets/svg/slider.horizontal.below.square.fil
 import ClockImage from '../../../assets/svg/clock.arrow.circlepath.svg';
 import CloseImage from '../../../assets/svg/close.bubble.svg';
 import EyeImage from '../../../assets/svg/eye.svg';
+import SearchImage from '../../../assets/svg/magnifyingglass.svg';
 
 const Vacancies = () => {
     const [isColumnLayout, setIsColumnLayout] = useState(true);
@@ -21,7 +22,8 @@ const Vacancies = () => {
         mobile: '',
         email: '',
         cv: null,
-        cvText: ''
+        cvText: '',
+        linkedin: ''
     });
 
     const [isSortedByDate, setIsSortedByDate] = useState(false);
@@ -31,12 +33,14 @@ const Vacancies = () => {
     const [jobDescriptions, setJobDescriptions] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [originalArrayData, setOriginalArrayData] = useState([]);
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');
 
     // Fetch career data from GitHub
     useEffect(() => {
         const fetchCareerData = async () => {
             try {
-                const response = await fetch('https://raw.githubusercontent.com/Absheron-Career-Portal/storage/refs/heads/main/src/data/career.json');
+                const response = await fetch('https://raw.githubusercontent.com/Absheron-Career-Portal/STORAGE/refs/heads/main/public/data/career.json');
                 const data = await response.json();
                 
                 // Transform the data to match your component's structure
@@ -45,14 +49,14 @@ const Vacancies = () => {
                     EyeImage: EyeImage,
                     view: item.view?.toString() || '0',
                     image: ArrayData1Img,
-                    title: item.title,
+                    title: item.title || '',
                     expireDateImage: ArrayData0Svg,
-                    expireDate: item.expireDate,
+                    expireDate: item.expireDate || '',
                     dateImage: ArrayData1Svg,
-                    date: item.date,
+                    date: item.date || '',
                     locationImage: ArrayData2Svg,
-                    location: item.location,
-                    type: item.type,
+                    location: item.location || '',
+                    type: item.type || '',
                     typeImage: ArrayData3Svg,
                     descriptionKey: item.description ? item.description.split('/').pop().replace('.txt', '') : '',
                     link: item.link || '#'
@@ -79,16 +83,38 @@ const Vacancies = () => {
 
                 for (const job of originalArrayData) {
                     try {
-                        if (job.descriptionKey) {
-                            const response = await import(`../../../assets/docs/${job.descriptionKey}.txt`);
-                            const text = await fetch(response.default).then(res => res.text());
-                            descriptions[job.id] = text;
+                        // Check job range to decide local or remote source
+                        if (job.id >= 0 && job.id <= 10) {
+                            // ✅ LOCAL LOAD (for 0–10)
+                            if (job.descriptionKey) {
+                                const response = await import(`../../../assets/docs/${job.descriptionKey}.txt`);
+                                const text = await fetch(response.default).then(res => res.text());
+                                descriptions[job.id] = text;
+                            } else {
+                                descriptions[job.id] = "Description not available.";
+                            }
                         } else {
-                            descriptions[job.id] = "Description not available.";
+                            //  REMOTE LOAD (for 11, 12, 13, etc.)
+                            let descriptionPath = job.descriptionKey;
+
+                            // Handle specific edge cases for 11–13
+                            if (job.id === 11) descriptionPath = 'logistikameneceri';
+                            if (job.id === 12) descriptionPath = 'logistikasatismeneceri';
+                            if (job.id === 13) descriptionPath = 'juyj';
+
+                            const fileUrl = `https://raw.githubusercontent.com/Absheron-Career-Portal/STORAGE/refs/heads/main/public/docs/${descriptionPath}.txt`;
+                            const response = await fetch(fileUrl);
+
+                            if (response.ok) {
+                                const text = await response.text();
+                                descriptions[job.id] = text;
+                            } else {
+                                descriptions[job.id] = "Təsvir tapılmadı və ya mövcud deyil.";
+                            }
                         }
                     } catch (error) {
-                        console.error(`Error loading description for ${job.descriptionKey}:`, error);
-                        descriptions[job.id] = "Description not available.";
+                        console.error(`Error loading description for job ${job.id}:`, error);
+                        descriptions[job.id] = "Təsvir yüklənərkən xəta baş verdi.";
                     }
                 }
 
@@ -103,7 +129,58 @@ const Vacancies = () => {
         loadJobDescriptions();
     }, [originalArrayData]);
 
-    // Function to check if a job is expired
+    // Search functionality
+    useEffect(() => {
+        if (searchTerm.trim() === '') {
+            // If search is empty, show normal data
+            if (isSortedByDate) {
+                const firstItem = originalArrayData.find(item => item.id === 0) || originalArrayData[0];
+                const otherItems = originalArrayData.filter(item => item.id !== 0);
+                
+                const monthNames = {
+                    'Yanvar': 1, 'Fevral': 2, 'Mart': 3, 'Aprel': 4, 'May': 5, 'Iyun': 6,
+                    'Iyul': 7, 'Avqust': 8, 'Sentyabr': 9, 'Oktyabr': 10, 'Noyabr': 11, 'Dekabr': 12,
+                    'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June': 6,
+                    'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12
+                };
+
+                const sortedItems = [...otherItems].sort((a, b) => {
+                    if (!a.date || !b.date) return 0;
+
+                    const parseDate = (dateStr) => {
+                        const parts = dateStr.replace(',', '').split(' ');
+                        if (parts.length < 3) return new Date();
+                        
+                        const [day, monthStr, year] = parts;
+                        const month = monthNames[monthStr];
+                        return new Date(year, month - 1, day);
+                    };
+
+                    return parseDate(b.date) - parseDate(a.date);
+                });
+
+                const limitedSortedItems = showAll ? sortedItems : sortedItems.slice(0, itemsToShow - 1);
+                setDisplayedData([firstItem, ...limitedSortedItems]);
+            } else {
+                setDisplayedData(showAll ? originalArrayData : originalArrayData.slice(0, itemsToShow));
+            }
+        } else {
+            // If search term exists, filter data with proper null checking
+            const filteredData = originalArrayData.filter(item => {
+                const title = item.title || '';
+                const location = item.location || '';
+                const type = item.type || '';
+                const searchLower = searchTerm.toLowerCase();
+                
+                return title.toLowerCase().includes(searchLower) ||
+                       location.toLowerCase().includes(searchLower) ||
+                       type.toLowerCase().includes(searchLower);
+            });
+            setDisplayedData(filteredData);
+        }
+        setAnimationKey(prevKey => prevKey + 1);
+    }, [searchTerm, originalArrayData, isSortedByDate, showAll, itemsToShow]);
+
     const isJobExpired = (job) => {
         if (!job.expireDate) return false;
 
@@ -185,6 +262,22 @@ const Vacancies = () => {
         setAnimationKey(prevKey => prevKey + 1);
     };
 
+    const toggleSearch = () => {
+        setIsSearchOpen(!isSearchOpen);
+        if (isSearchOpen) {
+            setSearchTerm('');
+        }
+    };
+
+    const handleSearchChange = (e) => {
+        setSearchTerm(e.target.value);
+    };
+
+    const handleSearchClose = () => {
+        setIsSearchOpen(false);
+        setSearchTerm('');
+    };
+
     const toggleShowAll = () => {
         if (originalArrayData.length === 0) return;
 
@@ -216,7 +309,6 @@ const Vacancies = () => {
                 originalArrayData.slice(0, itemsToShow)
             );
         } else {
-            // Show all items
             setDisplayedData(isSortedByDate ?
                 [originalArrayData.find(item => item.id === 0) || originalArrayData[0], 
                  ...originalArrayData.filter(item => item.id !== 0)
@@ -249,7 +341,6 @@ const Vacancies = () => {
     };
 
     const handleApplyClick = (job) => {
-        // Don't open popup if job is expired
         if (isJobExpired(job)) return;
 
         setSelectedJob(job);
@@ -260,7 +351,8 @@ const Vacancies = () => {
             mobile: '',
             email: '',
             cv: null,
-            cvText: '' // Reset text area when opening popup
+            cvText: '',
+            linkedin: ''
         });
     };
 
@@ -294,6 +386,7 @@ const Vacancies = () => {
             formDataToSend.append('firstName', formData.firstName);
             formDataToSend.append('profession', formData.profession);
             formDataToSend.append('mobile', formData.mobile);
+            formDataToSend.append('linkedin', formData.linkedin);
             formDataToSend.append('email', formData.email);
 
             if (selectedJob.id === 0 && formData.cvText) {
@@ -329,7 +422,7 @@ const Vacancies = () => {
 
     return (
         <div className="section-column">
-            <p className='Title-Header'>Karyera imkanları</p>
+            <p className='Title-Header'>Vakansiyalar</p>
             <div className="Section-Sort-Group">
 
                 <div className="Section-Sort-Left">
@@ -346,6 +439,23 @@ const Vacancies = () => {
                     >
                         <img src={ClockImage} className='No-Select' alt="Sort by time" />
                     </div>
+                    <div
+                        className={`Sorts animated-3 ${isSearchOpen ? 'search-open' : ''}`}
+                        onClick={toggleSearch}
+                    >
+                        <img src={SearchImage} className='No-Select' alt="Search" />
+                        <textarea 
+                            placeholder="Axtarış..."
+                            value={searchTerm}
+                            onChange={handleSearchChange}
+                            onClick={(e) => e.stopPropagation()}
+                        />
+                        {isSearchOpen && (
+                            <div className="search-close-icon" onClick={handleSearchClose}>
+                                {/* <img src={EyeImage} alt="Close search" /> */}
+                            </div>
+                        )}
+                    </div>
                 </div>
                 <div className="Section-Sort-Right">
                     <div className="Sorts animated-2" onClick={toggleShowAll}>
@@ -360,52 +470,45 @@ const Vacancies = () => {
             {!showPopup && (
                 <div className={`Section-Card-Grid-container ${isColumnLayout ? 'column-layout' : 'row-layout'}`}
                     key={animationKey} >
-                    {displayedData.map((item) => {
-                        const expired = isJobExpired(item);
-                        return (
-                            <div className={`Cards-grid Main-Button-Style Main-Card-grid ${isColumnLayout ? 'column-Cards-grid' : 'row-Cards-grid'} animated-${item.id + 1} ${expired ? 'expired-job' : ''}`}
-                                key={`${item.id}-${animationKey}`} >
-                                <div className={`Cards-Item-grid ${expired ? 'expired' : ''}`}>
-                                    <span className='Cards-Item-Folder'>
-                                        <p className='card-title-grid'>{item.title}</p>
-                                        {item.date && (
-                                            <div className="Cards-Item-Bio">
-                                                <img src={item.dateImage} className='No-Select' alt="Date" />
-                                                <p>{item.date}</p>
-                                            </div>
-                                        )}
-                                        {item.location && (
-                                            <div className="Cards-Item-Bio">
-                                                <img src={item.locationImage} className='No-Select' alt="Location" />
-                                                <p>{item.location}</p>
-                                            </div>
-                                        )}
-                                        {item.view && (
-                                            <div className="Cards-Item-Bio">
-                                                <img src={item.EyeImage} className='No-Select' alt="Views" />
-                                                <p>{item.view}</p>
-                                            </div>
-                                        )}
-                                        {/* {item.type && (
-                                            <div className="Cards-Item-Bio">
-                                                <img src={item.typeImage} className='No-Select' alt="Job Type" />
-                                                <p>{item.type}</p>
-                                            </div>
-                                        )} */}
-
-                                    </span>
-                                    <div className="Classic-Button">
-                                        <a
-                                            onClick={() => handleApplyClick(item)}
-                                            className={expired ? 'expired-button' : ''}
-                                        >
-                                            {expired ? 'Müraciət dayandırılıb' : 'Müraciət et'}
-                                        </a>
+                    {displayedData.length > 0 ? (
+                        displayedData.map((item) => {
+                            const expired = isJobExpired(item);
+                            return (
+                                <div className={`Cards-grid Main-Button-Style Main-Card-grid ${isColumnLayout ? 'column-Cards-grid' : 'row-Cards-grid'} animated-${item.id + 1} ${expired ? 'expired-job' : ''}`}
+                                    key={`${item.id}-${animationKey}`} >
+                                    <div className={`Cards-Item-grid ${expired ? 'expired' : ''}`}>
+                                        <span className='Cards-Item-Folder'>
+                                            <p className='card-title-grid'>{item.title}</p>
+                                            {item.date && (
+                                                <div className="Cards-Item-Bio">
+                                                    <img src={item.dateImage} className='No-Select' alt="Date" />
+                                                    <p>{item.date}</p>
+                                                </div>
+                                            )}
+                                            {item.location && (
+                                                <div className="Cards-Item-Bio">
+                                                    <img src={item.locationImage} className='No-Select' alt="Location" />
+                                                    <p>{item.location}</p>
+                                                </div>
+                                            )}
+                                        </span>
+                                        <div className="Classic-Button">
+                                            <a
+                                                onClick={() => handleApplyClick(item)}
+                                                className={expired ? 'expired-button' : ''}
+                                            >
+                                                {expired ? 'Müraciət dayandırılıb' : 'Müraciət et'}
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        );
-                    })}
+                            );
+                        })
+                    ) : (
+                        <div className="no-results">
+                            <p>Heç bir nəticə tapılmadı</p>
+                        </div>
+                    )}
                 </div>
             )}
 
@@ -459,7 +562,6 @@ const Vacancies = () => {
                                 )}
                             </div>
 
-                            {/* Right side form */}
                             <div className="application-form">
                                 <h3>Müraciət Formu</h3>
                                 <form onSubmit={handleSubmit}>
@@ -481,6 +583,17 @@ const Vacancies = () => {
                                             id="mobile"
                                             name="mobile"
                                             value={formData.mobile}
+                                            onChange={handleInputChange}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <input
+                                            type="url"
+                                            placeholder='LinkedIn profil URL-nizi daxil edin (İstəyə bağlı)
+'
+                                            id="linkedin"
+                                            name="linkedin"
+                                            value={formData.linkedin}
                                             onChange={handleInputChange}
                                         />
                                     </div>
@@ -528,8 +641,7 @@ const Vacancies = () => {
                                             <p className="optional-text"></p>
                                         )}
                                     </div>
-
-                                    {/* Text area for CV specifically for id:0 */}
+ 
                                     {selectedJob.id === 0 && (
                                         <div className="form-group">
                                             <textarea

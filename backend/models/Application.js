@@ -22,6 +22,9 @@ const ApplicationSchema = new mongoose.Schema({
   mobile: {
     type: String
   },
+  linkedin: {
+    type: String
+  },
   email: {
     type: String,
     required: true

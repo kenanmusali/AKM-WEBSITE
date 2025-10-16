@@ -31,7 +31,7 @@ const Partners = () => {
         { id: 8, image: ArrayData8Img, title: 'Bakı Biznes Universiteti', description: '' },
         { id: 9, image: ArrayData9Img, title: 'Qərbi Kaspi Universiteti', description: '' },
         { id: 10, image: ArrayData10Img, title: 'Dövlət Gömrük Komitəsi Akademiyası', description: '' },
-        { id: 11, image: ArrayData12Img, title: 'İctimai İaşə və Xidmət üzrə Bakı Dövlət Peşə Təhsil Mərkəzi', description: '' },
+        // { id: 11, image: ArrayData12Img, title: 'İctimai İaşə və Xidmət üzrə Bakı Dövlət Peşə Təhsil Mərkəzi', description: '' },
         { id: 12, image: ArrayData13Img, title: 'Odlar Yurdu Universiteti', description: '' },
     ];
 

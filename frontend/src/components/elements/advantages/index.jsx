@@ -5,7 +5,7 @@ import ChevronCircleRightActiveImg from '../../../assets/svg/chevron.circle.righ
 import ArrayData1Img from '../../../assets/svg/person.2.svg';
 import ArrayData2Img from '../../../assets/svg/bubble.left.and.bubble.right.svg';
 import ArrayData3Img from '../../../assets/svg/personalhotspot.svg';
-import ArrayData4Img from '../../../assets/svg/suitcase.svg';
+import ArrayData4Img from '../../../assets/svg/suitcaseX.svg';
 import ArrayData5Img from '../../../assets/svg/lightbulb.svg';
 import ArrayData6Img from '../../../assets/svg/chart.xyaxis.line.svg';
 import ArrayData7Img from '../../../assets/svg/lasso.sparkles.svg';

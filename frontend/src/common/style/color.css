@@ -2,6 +2,8 @@
     --primary-color: #0346B8;
     --lime-color-half-opacity: rgba(0, 255, 119, 0.5);
     --lime-color: #00FF78;
+    --dark-lime-color: #00a34c;
+    --dark-lime-color-filter: brightness(0) saturate(100%) invert(67%) sepia(73%) saturate(6222%) hue-rotate(122deg) brightness(88%) contrast(101%);;
     --yellow-color: #E9C01E;
     --yellow-color-filter: brightness(0) saturate(100%) invert(81%) sepia(72%) saturate(690%) hue-rotate(343deg) brightness(96%) contrast(90%);
     --yellow-color-half-opacity: rgba(233, 192, 30, 0.5);

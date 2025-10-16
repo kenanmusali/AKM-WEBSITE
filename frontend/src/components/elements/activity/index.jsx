@@ -16,12 +16,41 @@ const Activity = () => {
   const [expandedCard, setExpandedCard] = useState(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
+  // Function to convert relative paths to GitHub raw URLs
+  const fixImageUrl = (url) => {
+    if (!url) return '';
+    
+    // If it's already a full URL (http/https), return as-is
+    if (url.startsWith('http')) {
+      return url;
+    }
+    
+    // If it's a relative path starting with /image/, convert to GitHub raw URL
+    if (url.startsWith('/image/')) {
+      const imagePath = url.substring(1); // Remove the first '/'
+      return `https://raw.githubusercontent.com/Absheron-Career-Portal/STORAGE/refs/heads/main/public/${imagePath}`;
+    }
+    
+    // Return as-is for any other cases
+    return url;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://raw.githubusercontent.com/Absheron-Career-Portal/storage/refs/heads/main/src/data/activity.json');
+        const response = await fetch('https://raw.githubusercontent.com/Absheron-Career-Portal/STORAGE/refs/heads/main/public/data/activity.json');
         const data = await response.json();
-        setArrayData(data); 
+        
+        // Fix image URLs in the data
+        const fixedData = data.map(item => ({
+          ...item,
+          image: fixImageUrl(item.image),
+          additionalImages: item.additionalImages ? item.additionalImages.map(img => fixImageUrl(img)) : [],
+          dateImage: fixImageUrl(item.dateImage),
+          linkImage: fixImageUrl(item.linkImage)
+        }));
+        
+        setArrayData(fixedData); 
       } catch (error) {
         console.error('Error fetching activity data:', error);
       }
@@ -124,7 +153,14 @@ const Activity = () => {
               onClick={() => handleCardClick(item)}
             >
               <div className="Cards-Item">
-                <img src={item.image} className="No-Select Section-Images" alt={item.title} />
+                <img 
+                  src={item.image} 
+                  className="No-Select Section-Images" 
+                  alt={item.title}
+                  onError={(e) => {
+                    e.target.src = 'https://via.placeholder.com/300x200?text=Image+Not+Found';
+                  }}
+                />
               </div>
               <div className="Cards-Item">
                 <div className="Cards-Item-Bio-Group">
@@ -166,6 +202,9 @@ const Activity = () => {
                   src={expandedCard.additionalImages[selectedImageIndex]}
                   alt={expandedCard.title}
                   className="expanded-card-image-main"
+                  onError={(e) => {
+                    e.target.src = 'https://via.placeholder.com/800x600?text=Image+Not+Found';
+                  }}
                 />
                 {expandedCard.additionalImages.length > 1 && (
                   <>
@@ -189,7 +228,7 @@ const Activity = () => {
                     </div>
                     <div className="meta-item">
                       {expandedCard.linkImage && <img src={expandedCard.linkImage} alt="Images" />}
-                      <span>{expandedCard.imageTotal} images</span>
+                      <span>{expandedCard.imageTotal}</span>
                     </div>
                   </div>
                 </div>
@@ -216,7 +255,13 @@ const Activity = () => {
                         className={`thumbnail ${index === selectedImageIndex ? 'active' : ''}`}
                         onClick={() => setSelectedImageIndex(index)}
                       >
-                        <img src={img} alt={`Thumbnail ${index + 1}`} />
+                        <img 
+                          src={img} 
+                          alt={`Thumbnail ${index + 1}`} 
+                          onError={(e) => {
+                            e.target.src = 'https://via.placeholder.com/100x75?text=Image+Not+Found';
+                          }}
+                        />
                       </div>
                     ))}
                   </div>
@@ -228,7 +273,6 @@ const Activity = () => {
       )}
     </div>
   );
-  
 };
 
 export default Activity;

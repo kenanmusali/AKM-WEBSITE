@@ -92,7 +92,7 @@
 }
 
 .faq-answer-text {
-  font-size: var(--font-12px);
+  font-size: var(--font-14px);
   color: var(--text-color);
   padding-right: calc(var(--safe-place) * 2)
 }

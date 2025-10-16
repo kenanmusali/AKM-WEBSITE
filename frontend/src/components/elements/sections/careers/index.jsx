@@ -2,7 +2,7 @@ import React from 'react'
 
 const CareersItem = () => {
   return (
-    <div className='items'>Karyera imkanları</div>
+    <div className='items'>Vakansiyalar</div>
   )
 }
 

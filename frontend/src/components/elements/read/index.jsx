@@ -112,7 +112,7 @@ const Read = () => {
             </div>
             <div className="Cards-Item-Bio">
               <img src={ArrayData2Svg} alt="Gallery" />
-              <p>{blog.images?.length || 0} images</p>
+              <p>{blog.images?.length || 0}</p>
             </div>
           </div>
 
@@ -193,7 +193,7 @@ const Read = () => {
                     </div>
                     <div className="Cards-Item-Bio">
                       <img src={ArrayData2Svg} alt="Gallery" />
-                      <p>{relatedBlog.images?.length || 0} images</p>
+                      <p>{relatedBlog.images?.length || 0} </p>
                     </div>
                   </div>
                 </div>

@@ -138,6 +138,11 @@
 
 .Classic-Button:hover {
   border: 1px solid var(--primary-color-half-opacity);
+ background-color: var(--primary-color);
+}
+
+.Classic-Button:hover a{
+color: white;
 }
 
 .Main-Button a,
