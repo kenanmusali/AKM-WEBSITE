@@ -1042,6 +1042,32 @@
     margin-left: 8vw;
 }
 
+.Image-Social {
+    position: absolute;
+top: 50%;
+right: 0;
+transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+flex-direction: column;
+    justify-content: center;
+    gap: calc(var(--safe-place) * 1.5);
+    margin-top: var(--inner-safe-gap);
+    z-index: 1;
+ 
+    height: calc(100% - (var(--safe-place) * 1));
+    width: 10rem;
+    padding-bottom: var(--inner-safe-gap);
+}
+.Image-Social img{
+box-shadow: var(--main-shadow);
+
+}
+
+.Image-Social img:hover{
+scale: 1.1;
+}
+
 .SectionTextGroupBg p:nth-child(1) {
     color: var(--white-color);
     font-size: var(--font-36px);

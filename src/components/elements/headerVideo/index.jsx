@@ -2,6 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import ChevronCircleLeftActiveImg from '../../../assets/svg/chevron.circle.left.active.svg';
 import ChevronCircleRightActiveImg from '../../../assets/svg/chevron.circle.right.active.svg';
 import ArrayData1Img from '../../../assets/video/headerVideo.mp4';
+import XImg from '../../../assets/svg/x.Bubble.svg';
+import FbImg from '../../../assets/svg/fb.Bubble.svg';
+import IgImg from '../../../assets/svg/ig.Bubble.svg';
+import WImg from '../../../assets/svg/www.Bubble.svg';
+import InImg from '../../../assets/svg/in.Bubble.svg';
 
 const PlayCursor = '/play.bubble.svg';
 const PauseCursor = '/pause.bubble.svg';
@@ -162,12 +167,20 @@ const HeaderVideoComponent = () => {
                                     <h1>{item.title}</h1>
                                     <h2 className='item-desc' style={{ whiteSpace: 'pre-line' }}>{item.description}</h2>
                                 </div>
-                            </div> */}
+                            </div> */} <div className="Image-Social">
+                                <img src={WImg} />
+                                <img src={FbImg} />
+                                <img src={IgImg} />
+                                <img src={InImg} />
+                                <img src={XImg} />
+                               </div>
                             <div className="SectionTextGroupBgGroup">
                                 <div className="SectionTextGroupBg">
                                     <p>PEŞƏKAR UĞUR BURADAN BAŞLAYIR</p>
 
-                                    <p>Abşeron Logistika Mərkəzi olaraq istedadlı və gənc mütəxəssislər üçün səmərəli və inklüziv karyera imkanları təqdim edirik. Bizim bilik və bacarıqları dəyərləndirir, davamlı inkişafı dəstəkləyirik.</p>
+                                   
+                             <p>Abşeron Logistika Mərkəzi olaraq istedadlı və gənc mütəxəssislər üçün səmərəli və inklüziv karyera imkanları təqdim edirik. Bizim bilik və bacarıqları dəyərləndirir, davamlı inkişafı dəstəkləyirik.</p>
+                              
                                 </div>
                                 <div className="SectionBgTransparentShade"></div>
                             </div>
