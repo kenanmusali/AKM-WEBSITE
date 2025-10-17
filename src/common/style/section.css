@@ -12,7 +12,7 @@
     align-items: center;
     justify-content: center;
     gap: var(--safe-place);
-    padding: calc(var(--safe-place) * 3) 0;
+    padding: calc(var(--safe-place) * 2) 0;
 }
 
 .section-column1 {
@@ -970,7 +970,7 @@
 
 .SuccessMain {
     height: fit-content;
-    width: 50rem;
+    width: 40rem;
     object-fit: cover;
     background-color: var(--white-color);
     border-radius: var(--main-radius);
@@ -1077,7 +1077,7 @@
     font-weight: 400;
     max-width: 45rem;
     width: 100%;
-    padding: 30px var(--safe-place) 70px var(--safe-place);
+    padding: 30px var(--safe-place) 30px var(--safe-place);
     text-align: justify;
 
 }
