@@ -10,19 +10,20 @@ import ArrayData5Img from '../../../assets/svg/book.svg';
 import ArrayData6Img from '../../../assets/svg/pencil.and.outline.svg';
 import ArrayData7Img from '../../../assets/svg/signature.svg';
 import ArrayData8Img from '../../../assets/svg/calendar.badge.clock.svg';
+import PolygonImg from '../../../assets/svg/Polygon.svg';
 
 
 const Admission = () => {
   const ArrayData = [
 
-  { id: 0, image: ArrayData1Img, title: 'İş elanının yayımlanması', description: 'Services are delivered with exceptional standards and meticulous attention to detail.', order: 1 },
-  { id: 1, image: ArrayData2Img, title: 'Namizədlərin müraciəti', description: 'New ideas and advanced technologies are embraced to ensure forward-thinking solutions.', order: 2 },
-  { id: 2, image: ArrayData3Img, title: 'CV dəyərləndirmə mərhələsi', description: 'Every interaction is built on transparency, truthfulness, and ethical behavior.', order: 3 },
-  { id: 3, image: ArrayData4Img, title: 'İlkin seçim və müsahibə mərhələsi', description: 'Work is conducted with respect, efficiency, and unwavering dedication to standards.', order: 4 },
-  { id: 4, image: ArrayData5Img, title: 'Test və ya tapşırıq mərhələsi', description: 'Client data and processes are protected through strict and reliable safeguards.', order: 5 },
-  { id: 5, image: ArrayData6Img, title: 'İş təklifinin verilməsi', description: 'Operations are designed to minimize environmental impact and promote sustainability.', order: 6 },
-  { id: 6, image: ArrayData7Img, title: 'İşə qəbul prosesinin rəsmiləşdirilməsi', description: 'Commitments are honored with full responsibility for outcomes and actions.', order: 7 },
-  { id: 7, image: ArrayData8Img, title: 'Uyğunlaşma və adaptasiya prosesi', description: 'Commitments are honored with full responsibility for outcomes and actions.', order: 8 },
+    { id: 0, image: ArrayData1Img, title: 'İş elanının yayımlanması', description: 'Services are delivered with exceptional standards and meticulous attention to detail.', order: 1 },
+    { id: 1, image: ArrayData2Img, title: 'Namizədlərin müraciəti', description: 'New ideas and advanced technologies are embraced to ensure forward-thinking solutions.', order: 2 },
+    { id: 2, image: ArrayData3Img, title: 'CV dəyərləndirmə mərhələsi', description: 'Every interaction is built on transparency, truthfulness, and ethical behavior.', order: 3 },
+    { id: 3, image: ArrayData4Img, title: 'İlkin seçim və müsahibə mərhələsi', description: 'Work is conducted with respect, efficiency, and unwavering dedication to standards.', order: 4 },
+    { id: 4, image: ArrayData5Img, title: 'Test və ya tapşırıq mərhələsi', description: 'Client data and processes are protected through strict and reliable safeguards.', order: 5 },
+    { id: 5, image: ArrayData6Img, title: 'İş təklifinin verilməsi', description: 'Operations are designed to minimize environmental impact and promote sustainability.', order: 6 },
+    { id: 6, image: ArrayData7Img, title: 'İşə qəbul prosesinin rəsmiləşdirilməsi', description: 'Commitments are honored with full responsibility for outcomes and actions.', order: 7 },
+    { id: 7, image: ArrayData8Img, title: 'Uyğunlaşma və adaptasiya prosesi', description: 'Commitments are honored with full responsibility for outcomes and actions.', order: 8 },
 
 
 
@@ -96,7 +97,10 @@ const Admission = () => {
 
       <p className='Title-Header'>Mərkəzimizdə işə qəbul prosesi</p>
       <p className='section-description'>Mərkəzimizdə işə qəbul prosesi aşağıdakı mərhələ ardıcıllığına uyğun olaraq həyata keçirilir:</p>
-
+      {/* <div className="Arrow-Group">
+        <div className="Arrow-Tail"></div>
+        <div className="Arrow-Head"><img src={PolygonImg}/></div>
+      </div> */}
       <div className="Section-Card-Group">
         <div className={`Card-Left ${shouldHideNav ? 'hide' : ''} No-Select`}>
           <button onClick={goToPrev} className="nav-button">
@@ -116,7 +120,7 @@ const Admission = () => {
                 <p>{item.title}</p>
                 <p></p>
               </div>
-                <p className='SectionNumOrder No-Select'>{item.order}</p>
+              <p className='SectionNumOrder No-Select'>{item.order}</p>
             </div>
           ))}
         </div>

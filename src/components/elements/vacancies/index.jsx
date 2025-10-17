@@ -35,6 +35,7 @@ const Vacancies = () => {
     const [originalArrayData, setOriginalArrayData] = useState([]);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
+    const [isCompactSortGroup, setIsCompactSortGroup] = useState(false); // NEW STATE FOR WIDTH TOGGLE
 
     // Fetch career data from GitHub
     useEffect(() => {
@@ -218,9 +219,21 @@ const Vacancies = () => {
         };
     }, [showPopup]);
 
+    // KEEP the existing layout toggle function
     const toggleLayout = () => {
         setIsColumnLayout(!isColumnLayout);
         setAnimationKey(prevKey => prevKey + 1);
+    };
+
+    // ADD new function for width toggle
+    const toggleSortGroupWidth = () => {
+        setIsCompactSortGroup(!isCompactSortGroup);
+    };
+
+    // MODIFIED: Now the first sort button does BOTH layout toggle AND width toggle
+    const handleFirstSortClick = () => {
+        toggleLayout(); // Keep the original layout toggle
+        toggleSortGroupWidth(); // Add the new width toggle
     };
 
     const toggleSortByDate = () => {
@@ -423,10 +436,12 @@ const Vacancies = () => {
     return (
         <div className="section-column">
             <p className='Title-Header'>Vakansiyalar</p>
-            <div className="Section-Sort-Group">
+            {/* ADD conditional class for width toggle */}
+            <div className={`Section-Sort-Group ${isCompactSortGroup ? 'compact' : ''}`}>
 
                 <div className="Section-Sort-Left">
-                    <div className="Sorts animated-1" onClick={toggleLayout}>
+                    {/* CHANGE onClick to handleFirstSortClick which does BOTH functions */}
+                    <div className="Sorts animated-1" onClick={handleFirstSortClick}>
                         {isColumnLayout ? (
                             <img src={SortColumnImage} className='No-Select' alt="Column layout" />
                         ) : (

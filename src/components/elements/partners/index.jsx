@@ -5,6 +5,7 @@ import ChevronCircleRightActiveImg from '../../../assets/svg/chevron.circle.righ
 import ArrayData1Img from '../../../assets/image/partners/unec.png';
 import ArrayData2Img from '../../../assets/image/partners/bdu.png';
 import ArrayData3Img from '../../../assets/image/partners/aztu.png';
+import ArrayData14Img from '../../../assets/image/partners/btk.png';
 import ArrayData4Img from '../../../assets/image/partners/bau.png';
 import ArrayData5Img from '../../../assets/image/partners/ada.png';
 import ArrayData6Img from '../../../assets/image/partners/bmu.png';
@@ -23,6 +24,7 @@ const Partners = () => {
         { id: 0, image: ArrayData1Img, title: 'Azərbaycan Dövlət İqtisad Universiteti', description: '' },
         { id: 1, image: ArrayData2Img, title: 'Bakı Dövlət Universiteti', description: '' },
         { id: 2, image: ArrayData3Img, title: 'Azərbaycan Texniki Universiteti', description: '' },
+        { id: 13, image: ArrayData14Img, title: 'Bakı Texniki Kolleci', description: '' },
         { id: 3, image: ArrayData4Img, title: 'Bakı Avrasiya Universiteti', description: '' },
         { id: 4, image: ArrayData5Img, title: 'ADA Universiteti', description: '' },
         { id: 5, image: ArrayData6Img, title: 'Bakı Mühəndislik Universiteti', description: '' },
@@ -31,7 +33,7 @@ const Partners = () => {
         { id: 8, image: ArrayData8Img, title: 'Bakı Biznes Universiteti', description: '' },
         { id: 9, image: ArrayData9Img, title: 'Qərbi Kaspi Universiteti', description: '' },
         { id: 10, image: ArrayData10Img, title: 'Dövlət Gömrük Komitəsi Akademiyası', description: '' },
-        // { id: 11, image: ArrayData12Img, title: 'İctimai İaşə və Xidmət üzrə Bakı Dövlət Peşə Təhsil Mərkəzi', description: '' },
+        { id: 11, image: ArrayData12Img, title: 'Dəmir Yolu ve Metropolitenin üzrə Bakı Dövlət Peşə Təhsil Mərkəzi', description: '' },
         { id: 12, image: ArrayData13Img, title: 'Odlar Yurdu Universiteti', description: '' },
     ];
 
@@ -98,7 +100,7 @@ const Partners = () => {
         <div className="section-column" onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}>
 
-            <p className='Title-Header'>Tərəfdaşlarımız</p>
+            <p className='Title-Header'>Təhsil tərəfdaşlarımız</p>
             <p className='section-description'>Tərəfdaşlıq etdiyimiz təhsil müəssisələri ilə birgə gənclərin bilik və bacarıqlarının inkişafına dəstək oluruq. Bu əməkdaşlıqlar sayəsində tələbə və məzunlar üçün daha geniş karyera və təcrübə imkanları yaradırıq.</p>
 
             <div className="Section-Card-Group">
