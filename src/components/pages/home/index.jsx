@@ -16,6 +16,7 @@ const Home = () => {
         <div className="Layout-Group">
             {/* <Header /> */}
             <HeaderVideoComponent />
+            <br />
             <div id="about">
                 <Info />
             </div>
