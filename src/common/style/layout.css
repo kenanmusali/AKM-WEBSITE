@@ -246,31 +246,16 @@
     width: 100%;
     background-color: rgb(43, 255, 0);
     padding: var(--safe-place);
-
 } */
 
 .social-footer-group {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    background-color: #ECEFF6;
-    padding: 0.5rem 0.8rem;
-    border-radius: var(--secondary-radius);
+    gap: 1rem;
 }
-.Social-Text {
-    font-size: var(--font-14px);
-    font-weight: 600;
-}
+
 .social-footer-group p {
     font-size: 20px;
     font-weight: 700;
-}
-
-.Link-Fotter {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
 }

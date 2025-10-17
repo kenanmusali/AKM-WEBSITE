@@ -1054,7 +1054,7 @@ flex-direction: column;
     gap: calc(var(--safe-place) * 1.5);
     margin-top: var(--inner-safe-gap);
     z-index: 1;
- 
+
     height: calc(100% - (var(--safe-place) * 1));
     width: 10rem;
     padding-bottom: var(--inner-safe-gap);
