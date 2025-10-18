@@ -17,6 +17,7 @@
     padding: calc(var(--safe-place) * 2) 0;
 }
 
+
 .section-column1 {
     position: relative;
     display: flex;
