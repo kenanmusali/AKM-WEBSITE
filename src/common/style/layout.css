@@ -24,7 +24,6 @@
 .items a {
     text-decoration: none;
     color: var(--black-color)
-
 }
 
 .items:hover {
@@ -174,28 +173,7 @@
     /* gap: var(--safe-place); */
 }
 
-@media (max-width: 768px) {
-    .Nav-End-items {
-        display: none;
-    }
 
-    .Main-text {
-
-        white-space: nowrap;
-
-
-    }
-
-    .Footer .Logo-Marks {
-        display: none;
-    }
-
-    .social-footer-group {
-        display: flex;
-        width: 100%;
-        justify-content: space-between !important;
-    }
-}
 
 .Footer-Group {
     height: calc(75px + (var(--safe-place) * 2));
@@ -206,7 +184,7 @@
 }
 
 .Footer {
-    padding: var(--safe-place);
+    padding-inline: var(--safe-place);
     height: 100%;
     width: 100%;
     background-color: var(--white-color);
@@ -258,3 +236,36 @@
     font-size: 20px;
     font-weight: 700;
 }
+
+
+@media (max-width: 1500px) {
+    .Footer {
+        display: flex;
+        flex-direction: column;
+        align-items: start !important;
+        padding: var(--safe-place);
+        gap: 2.5rem;
+    }
+
+    .Footer-Group {
+        height: calc(160px + (var(--safe-place) * 2));
+        width: 100%;
+        padding: var(--safe-place);
+        z-index: 999999999;
+        background-color: var(--background-color)
+    }
+}
+
+@media (max-width: 768px) {
+
+
+}
+
+.Logo-Stack-Footer {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-wrap: wrap; /* Enables wrapping of items */
+  gap: 2.5rem;
+}
+

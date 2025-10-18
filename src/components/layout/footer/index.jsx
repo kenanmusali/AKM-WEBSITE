@@ -1,15 +1,26 @@
 import React from 'react'
-import logoIMG from '../../../assets/favicon/logoALMaze.svg'
-import fbIMG from '../../../assets/svg/fb.social.svg'
+import logo1IMG from '../../../assets/svg/Logo.1.svg'
+import logo2IMG from '../../../assets/svg/Logo.2.svg'
+import logo3IMG from '../../../assets/svg/Logo.3.svg'
+import logo4IMG from '../../../assets/svg/Logo.4.svg'
+import logo5IMG from '../../../assets/svg/Logo.5.svg'
+
 import inIMG from '../../../assets/svg/in.social.svg'
-import igIMG from '../../../assets/svg/ig.social.svg'
-import xIMG from '../../../assets/svg/x.social.svg'
+// import fbIMG from '../../../assets/svg/fb.social.svg'
+// import igIMG from '../../../assets/svg/ig.social.svg'
+// import xIMG from '../../../assets/svg/x.social.svg'
 
 const Footer = () => {
     return (
         <div className='Footer-Group'>
             <div className="Footer Center-Objects ">
-                <img src={logoIMG} class="Logo-Marks No-Select" />
+                <div className="Logo-Stack-Footer">
+                    <img src={logo1IMG} class="Logo-Marks No-Select" />
+                    <img src={logo2IMG} class="Logo-Marks No-Select" />
+                    <img src={logo3IMG} class="Logo-Marks No-Select" />
+                    <img src={logo4IMG} class="Logo-Marks No-Select" />
+                    <img src={logo5IMG} class="Logo-Marks No-Select" />
+                </div>
                 <div className="social-footer-group">
                     <p>Biz sosial şəbəkələrdən izləyin:</p>
                     <div className="social-icons">

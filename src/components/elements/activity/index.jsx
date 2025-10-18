@@ -16,22 +16,22 @@ const Activity = () => {
   const [expandedCard, setExpandedCard] = useState(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-  // Function to convert relative paths to GitHub raw URLs
+
   const fixImageUrl = (url) => {
     if (!url) return '';
     
-    // If it's already a full URL (http/https), return as-is
+
     if (url.startsWith('http')) {
       return url;
     }
     
-    // If it's a relative path starting with /image/, convert to GitHub raw URL
+   
     if (url.startsWith('/image/')) {
-      const imagePath = url.substring(1); // Remove the first '/'
+      const imagePath = url.substring(1); 
       return `https://raw.githubusercontent.com/Absheron-Career-Portal/STORAGE/refs/heads/main/public/${imagePath}`;
     }
     
-    // Return as-is for any other cases
+
     return url;
   };
 
@@ -41,7 +41,7 @@ const Activity = () => {
         const response = await fetch('https://raw.githubusercontent.com/Absheron-Career-Portal/STORAGE/refs/heads/main/public/data/activity.json');
         const data = await response.json();
         
-        // Fix image URLs in the data
+ 
         const fixedData = data.map(item => ({
           ...item,
           image: fixImageUrl(item.image),
@@ -75,7 +75,7 @@ const Activity = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, [ArrayData.length]);
 
-  // Auto-slide carousel
+
   useEffect(() => {
     if (!isHovered && !shouldHideNav) {
       const interval = setInterval(() => goToNext(), 6000);
@@ -83,7 +83,7 @@ const Activity = () => {
     }
   }, [currentIndex, isHovered, itemsPerPage, shouldHideNav]);
 
-  // Hide carousel when a card is expanded
+  
   useEffect(() => {
     const aswContainer = document.querySelector('.asw-container');
     if (aswContainer) {
@@ -136,7 +136,7 @@ const Activity = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <p className="Title-Header">Fəaliyyətimiz</p>
+      <p className="Title-Header">Kariyera və KSM fəaliyyətlərimiz</p>
 
       <div className="Section-Card-Group">
         <div className="Card-Left No-Select">
