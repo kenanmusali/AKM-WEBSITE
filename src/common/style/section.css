@@ -1,8 +1,10 @@
 .Title-Header {
     font-weight: 600;
-    font-size: var(--font-36px);
+    font-size: 30px !important;
+    /* font-size: var(--font-36px); */
     text-align: center;
     padding-inline: var(--safe-place);
+    text-transform: uppercase;
 }
 
 .section-column {
