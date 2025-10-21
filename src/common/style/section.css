@@ -1,10 +1,10 @@
 .Title-Header {
     font-weight: 600;
-    font-size: 30px !important;
-    /* font-size: var(--font-36px); */
+    /* font-size: 30px !important; */
+    font-size: var(--font-36px);
     text-align: center;
     padding-inline: var(--safe-place);
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
 }
 
 .section-column {
@@ -978,6 +978,17 @@
     border-radius: var(--main-radius);
     padding: var(--inner-safe-gap);
     box-shadow: var(--main-shadow);
+}
+
+.SuccessMain0 {
+    height: fit-content;
+    width: 50rem !important;
+    object-fit: cover;
+    background-color:none !important;
+    background:none !important;
+    border-radius: none !important;
+    padding: none !important;
+    box-shadow: none !important;
 }
 
 

@@ -172,14 +172,15 @@ const HeaderVideoComponent = () => {
                                 <img src={IgImg} />
                                 <img src={InImg} />
                                 <img src={XImg} />
-                               </div>
+                            </div>
                             <div className="SectionTextGroupBgGroup">
                                 <div className="SectionTextGroupBg">
                                     <p>PEŞƏKAR UĞUR BURADAN BAŞLAYIR</p>
+                                    {/* <p>Peşəkar uğur buradan başlayır</p> */}
 
-                                   
-                             <p>Abşeron Logistika Mərkəzi olaraq istedadlı və gənc mütəxəssislər üçün səmərəli və inklüziv karyera imkanları təqdim edirik. Bizim bilik və bacarıqları dəyərləndirir, davamlı inkişafı dəstəkləyirik.</p>
-                              
+
+                                    <p>Abşeron Logistika Mərkəzi olaraq istedadlı və gənc mütəxəssislər üçün səmərəli və inklüziv karyera imkanları təqdim edirik. Bizim bilik və bacarıqları dəyərləndirir, davamlı inkişafı dəstəkləyirik.</p>
+
                                 </div>
                                 <div className="SectionBgTransparentShade"></div>
                             </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ChevronCircleLeftActiveImg from '../../../assets/svg/chevron.circle.left.active.svg';
 import ChevronCircleRightActiveImg from '../../../assets/svg/chevron.circle.right.active.svg';
-import Header1Img from '../../../assets/image/header/IMG_5499.jpg';
+import Header1Img from '../../../assets/image/header/FrameHeader.png';
 
 const Info = () => {
     const ArrayData = [
@@ -93,7 +93,7 @@ const Info = () => {
                                     <h2 className='item-desc' style={{ whiteSpace: 'pre-line' }}>{item.description}</h2>
                                 </div>
                             </div>
-                            <div className="SuccessMain">
+                            <div className="SuccessMain SuccessMain0">
                                 <div className="image-container">
                                     <img 
                                         src={item.image} 
