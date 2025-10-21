@@ -984,12 +984,67 @@
     height: fit-content;
     width: 50rem !important;
     object-fit: cover;
-    background-color:none !important;
-    background:none !important;
+    background-color: none !important;
+    background: none !important;
     border-radius: none !important;
     padding: none !important;
     box-shadow: none !important;
 }
+
+
+/* .image-container {
+    position: relative;
+    height:24vw;
+    width: 100%;
+
+}
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.image-container-grid {
+  display: grid;
+  place-items: center;
+}
+
+.image-container-grid img {
+  grid-row: 1;
+  grid-column: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -1057,12 +1112,12 @@
 
 .Image-Social {
     position: absolute;
-top: 50%;
-right: 0;
-transform: translate(-50%, -50%);
+    top: 50%;
+    right: 0;
+    transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
-flex-direction: column;
+    flex-direction: column;
     justify-content: center;
     gap: calc(var(--safe-place) * 1.5);
     margin-top: var(--inner-safe-gap);
@@ -1072,13 +1127,14 @@ flex-direction: column;
     width: 10rem;
     padding-bottom: var(--inner-safe-gap);
 }
-.Image-Social img{
-box-shadow: var(--main-shadow);
+
+.Image-Social img {
+    box-shadow: var(--main-shadow);
 
 }
 
-.Image-Social img:hover{
-scale: 1.1;
+.Image-Social img:hover {
+    scale: 1.1;
 }
 
 .SectionTextGroupBg p:nth-child(1) {
@@ -1958,38 +2014,38 @@ video {
 
 
 .Arrow-Group {
-position: absolute;
-height: fit-content;
-width: 100%;
-border-radius: var();
-top: 63%;
-left: 50%;
-transform: translate(-50%, -50%);
-display: flex;
-align-items: center;
-justify-content: center;
-padding-inline: 8rem;
+    position: absolute;
+    height: fit-content;
+    width: 100%;
+    border-radius: var();
+    top: 63%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 8rem;
 }
 
 .Arrow-Tail {
     background-color: #E9ECF6;
-height: 4rem;
-width: 90%;
-border-radius: var(--secondary-radius);
+    height: 4rem;
+    width: 90%;
+    border-radius: var(--secondary-radius);
 
 
 }
 
-.Arrow-Head img{
+.Arrow-Head img {
     margin-right: -40%;
 }
 
 .Arrow-Head {
-height: fit-content;
-background-color: blue;
-width: 10%;
-right: 0;
-display: flex;
-align-items: center;
-justify-content: end;
+    height: fit-content;
+    background-color: blue;
+    width: 10%;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: end;
 }
