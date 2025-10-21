@@ -158,7 +158,6 @@ const HeaderVideoComponent = () => {
                         />
                     </button>
                 </div>
-
                 <div className="Section-Card Section-Card1">
                     {visibleItems.map((item) => (
                         <div className="SectionSuccess" key={item.id}>
