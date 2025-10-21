@@ -27,7 +27,6 @@ const Info = () => {
     const [visibleImageIndex, setVisibleImageIndex] = useState(0);
     const sectionRef = useRef(null);
 
-    // Animation effect
     const startAnimation = () => {
         setVisibleImageIndex(0);
         const interval = setInterval(() => {
@@ -41,17 +40,16 @@ const Info = () => {
         }, 500);
     };
 
-    // Intersection Observer to detect scroll into view
     useEffect(() => {
         const observer = new IntersectionObserver(
             entries => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        startAnimation(); // restart animation when component is visible
+                        startAnimation();
                     }
                 });
             },
-            { threshold: 0.5 } // trigger when 50% visible
+            { threshold: 0.5 }
         );
 
         if (sectionRef.current) {
