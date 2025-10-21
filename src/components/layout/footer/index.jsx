@@ -9,7 +9,6 @@ import inIMG from '../../../assets/svg/in.social.svg'
 // import fbIMG from '../../../assets/svg/fb.social.svg'
 // import igIMG from '../../../assets/svg/ig.social.svg'
 // import xIMG from '../../../assets/svg/x.social.svg'
-
 const Footer = () => {
     return (
         <div className='Footer-Group'>
