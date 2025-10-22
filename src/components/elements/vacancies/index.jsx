@@ -99,9 +99,8 @@ const Vacancies = () => {
                             let descriptionPath = job.descriptionKey;
 
                             // Handle specific edge cases for 11–13
-                            if (job.id === 11) descriptionPath = 'logistikameneceri';
-                            if (job.id === 12) descriptionPath = 'logistikasatismeneceri';
-                            if (job.id === 13) descriptionPath = 'juyj';
+  
+             
 
                             const fileUrl = `https://raw.githubusercontent.com/Absheron-Career-Portal/STORAGE/refs/heads/main/public/docs/${descriptionPath}.txt`;
                             const response = await fetch(fileUrl);
@@ -508,7 +507,7 @@ const Vacancies = () => {
                                                 </div>
                                             )}
                                         </span>
-                                        <div className="Classic-Button">
+                                        <div className="Classic-Button ">
                                             <a
                                                 onClick={() => handleApplyClick(item)}
                                                 className={expired ? 'expired-button' : ''}
@@ -536,7 +535,6 @@ const Vacancies = () => {
                             <img src={CloseImage} alt="Close" />
                         </button>
                         <div className="popup-container">
-                            {/* Left side content */}
                             <div className="job-details">
                                 {selectedJob.id === 0 ? (
                                     <>
@@ -571,7 +569,7 @@ const Vacancies = () => {
                                                 </div>
                                             )}
                                         </div>
-                                        <div className="job-description">
+                                        {/* <div className="job-description">
                                             <p style={{ whiteSpace: 'pre-line' }}>
                                                 {jobDescriptions[selectedJob.id]?.split('\n').map((line, index) => {
                                                     const trimmedLine = line.trim();
@@ -583,6 +581,37 @@ const Vacancies = () => {
                                                         return (
                                                             <strong key={index} style={{ textTransform: 'uppercase' }}>
                                                                 {trimmedLine}
+                                                            </strong>
+                                                        );
+                                                    }
+                                                    return line;
+                                                }).reduce((acc, line, index) => {
+                                                    if (acc === null) return [line];
+                                                    return [...acc, <br key={`br-${index}`} />, line];
+                                                }, null)}
+                                            </p>
+                                        </div> */}
+                                        <div className="job-description">
+                                            <p style={{ whiteSpace: 'pre-line' }}>
+                                                {jobDescriptions[selectedJob.id]?.split('\n').map((line, index) => {
+                                                    const trimmedLine = line.trim();
+                                                    const upperCaseLine = trimmedLine.toUpperCase();
+
+                                                    if (upperCaseLine.includes('ÜMUMİ VƏZİFƏ ÖHDƏLİKLƏRİ:') ||  
+                                                        upperCaseLine.includes('Ümumi vəzifə öhdəlikləri:') ||   
+                                                        upperCaseLine.includes('ümumi vəzifə öhdəlikləri:') ||  
+
+                                                        upperCaseLine.includes('NAMİZƏDƏ QARŞI TƏLƏBLƏR:') ||   
+                                                        upperCaseLine.includes('Namizədə qarşı tələblər:') ||   
+                                                        upperCaseLine.includes('namizədə qarşı tələblər:') ||   
+
+                                                        upperCaseLine.includes('PEŞƏKARLIK BACARIQLARI:') ||   
+                                                        upperCaseLine.includes('Peşəkarlıq bacarıqları:') ||   
+                                                        upperCaseLine.includes('peşəkarlıq bacarıqları:')
+                                                    ) {
+                                                        return (
+                                                            <strong key={index} style={{ textTransform: 'uppercase' }}>
+                                                                {upperCaseLine}
                                                             </strong>
                                                         );
                                                     }
