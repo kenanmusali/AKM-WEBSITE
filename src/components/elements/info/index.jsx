@@ -93,7 +93,7 @@ const Info = () => {
                                 </div>
                             </div>
 
-                            <div className="SuccessMain SuccessMain0">
+                            <div className="SuccessMain SuccessMain0 No-Select ">
                                 <div className="image-container-grid">
                                     {item.images.map((img, index) => (
                                         <img

@@ -187,10 +187,18 @@
 
 .No-Select {
   user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  pointer-events: none;
+  -webkit-user-drag: none;
   -khtml-user-drag: none;
   -moz-user-drag: none;
   -o-user-drag: none;
+  user-drag: none;
 }
+
+
 
 .Main-Popup::before {
   content: '';
@@ -398,28 +406,29 @@
 }
 
  */
- .Snackbar-Style img {
+.Snackbar-Style img {
   width: 22px;
   height: 22px;
   filter: var(--primary-color-filter);
- }
+}
 
-.Snackbar-Style p{
+.Snackbar-Style p {
   margin-bottom: 2px;
 
 }
+
 .Snackbar-Style {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: calc(var(--inner-safe-gap) / 1.2);
- 
+
 
   outline: 2px solid var(--primary-color-half-opacity);
   color: var(--primary-color);
   height: fit-content;
   width: fit-content;
-  padding: var(--inner-safe-gap) ;
+  padding: var(--inner-safe-gap);
   border-radius: var(--secondary-radius);
-  background-color:none;
+  background-color: none;
 }

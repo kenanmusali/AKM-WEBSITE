@@ -20,21 +20,8 @@
   <!-- <script src="https://website-widgets.pages.dev/dist/sienna.min.js" defer></script> -->
   <script src="https://app.embed.im/accessibility.js" defer></script>  
 
-  <script>
-    function adjustZoom() {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-
-      if (width >= 1024 && width <= 1300 && height >= 740 && height <= 940) {
-        document.body.style.zoom = "0.8";
-      } else {
-        document.body.style.zoom = "1";
-      }
-    }
-
-    window.addEventListener("resize", adjustZoom);
-    window.addEventListener("load", adjustZoom);
-  </script>
+<script src="/public/js/size.js"></script>
+<script src="/public/js/select.js"></script>
 </body>
 
 </html>

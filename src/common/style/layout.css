@@ -238,7 +238,7 @@
 }
 
 
-@media (max-width: 1500px) {
+@media (max-width: 1130px) {
     .Footer {
         display: flex;
         flex-direction: column;
