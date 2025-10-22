@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ChevronCircleLeftActiveImg from '../../../assets/svg/chevron.circle.left.active.svg';
 import ChevronCircleRightActiveImg from '../../../assets/svg/chevron.circle.right.active.svg';
+import Header0Img from '../../../assets/image/header/FrameHeader0.png';
 import Header1Img from '../../../assets/image/header/FrameHeader1.png';
 import Header2Img from '../../../assets/image/header/FrameHeader2.png';
 import Header3Img from '../../../assets/image/header/FrameHeader3.png';
@@ -15,7 +16,7 @@ const Info = () => {
         {
             id: 0,
             images: [
-                Header1Img, Header2Img, Header3Img, Header4Img,
+                Header0Img, Header1Img, Header2Img, Header3Img, Header4Img,
                 Header5Img, Header6Img, Header7Img, Header8Img
             ],
             description:
