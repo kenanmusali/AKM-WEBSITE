@@ -32,14 +32,14 @@
 }
 
 .Main-Button-Unfocused {
-    position: relative;
+  position: relative;
   background: none;
   color: var(--primary-color);
   height: 38px;
   width: fit-content;
   padding-inline: calc(var(--safe-place) * 1);
   border-radius: var(--secondary-radius);
-    border: 1px solid var(--light-gray-color);
+  border: 1px solid var(--light-gray-color);
   z-index: 1;
   display: flex;
   align-items: center;
@@ -61,7 +61,7 @@
 .Main-Button-Unfocused:hover {
   background-color: var(--primary-color);
   color: var(--white-color);
-   animation: fade-in-down 0.7s ease 1;
+  animation: fade-in-down 0.7s ease 1;
   -webkit-animation: fade-in-down 0.7s ease 1;
 }
 
@@ -138,11 +138,11 @@
 
 .Classic-Button:hover {
   border: 1px solid var(--primary-color-half-opacity);
- background-color: var(--primary-color);
+  background-color: var(--primary-color);
 }
 
-.Classic-Button:hover a{
-color: white;
+.Classic-Button:hover a {
+  color: white;
 }
 
 .Main-Button a,
@@ -398,4 +398,28 @@ color: white;
 }
 
  */
+ .Snackbar-Style img {
+  width: 22px;
+  height: 22px;
+  filter: var(--primary-color-filter);
+ }
 
+.Snackbar-Style p{
+  margin-bottom: 2px;
+
+}
+.Snackbar-Style {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--inner-safe-gap) / 1.2);
+ 
+
+  outline: 2px solid var(--primary-color-half-opacity);
+  color: var(--primary-color);
+  height: fit-content;
+  width: fit-content;
+  padding: var(--inner-safe-gap) ;
+  border-radius: var(--secondary-radius);
+  background-color:none;
+}

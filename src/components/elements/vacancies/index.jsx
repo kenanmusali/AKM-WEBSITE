@@ -430,7 +430,7 @@ const Vacancies = () => {
     };
 
     if (isLoading) {
-        return <div className="section-column">Vakansiyalar Yüklənir</div>;
+        return <div className="section-column "><div className="Snackbar-Style"><img src={ArrayData0Svg} /><p>Vakansiyalar Yüklənir...</p></div> </div>;
     }
 
     return (
