@@ -39,7 +39,7 @@ const Faq = () => {
 
     return (
         <div className="section-column">
-            <p className="Title-Header">Tez-tez verilən suallar</p>
+            <p className="Title-Header">Tez-tez verİlən suallar</p>
             <div className="faq-list">
                 {ArrayData.map(item => {
                     const animationClass = `animated-${(item.id % 6) + 1}`;

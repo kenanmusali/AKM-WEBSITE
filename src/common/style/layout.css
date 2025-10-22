@@ -269,3 +269,16 @@
   gap: 2.5rem;
 }
 
+@media (max-width: 768px) {
+  .Logo-Stack-Footer img {
+    display: none;
+  }
+
+  .Logo-Stack-Footer img:first-child,
+  .Logo-Stack-Footer img:last-child {
+    display: inline-block;
+  }
+  .Footer-Group {
+    padding-top: 0;
+  }
+}

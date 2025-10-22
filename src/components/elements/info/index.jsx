@@ -71,8 +71,8 @@ const Info = () => {
     };
 
     return (
-        <div className="section-column" ref={sectionRef}>
-            <p className="Title-Header">Abşeron Logistika Mərkəzi Karyera Plaforması</p>
+        <div className="section-column section-column0" ref={sectionRef}>
+            <p className="Title-Header">Abşeron Logİstİka Mərkəzİ Karyera Plaforması</p>
 
             <div className="Section-Card-Group SuccessCardGroup InfoCardGroup">
                 <div className="Card-Left No-Select">
@@ -81,7 +81,7 @@ const Info = () => {
                     </button>
                 </div>
 
-                <div className="Section-Card">
+                <div className="Section-Card Section-Card0">
                     {ArrayData.map(item => (
                         <div className="SectionSuccess" key={item.id}>
                             <div className="SuccessTextGroup">

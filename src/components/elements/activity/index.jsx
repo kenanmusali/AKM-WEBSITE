@@ -136,7 +136,7 @@ const Activity = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <p className="Title-Header">Kariyera və KSM fəaliyyətlərimiz</p>
+      <p className="Title-Header">Karyera və KSM fəalİyyətlərİmİz</p>
 
       <div className="Section-Card-Group">
         <div className="Card-Left No-Select">

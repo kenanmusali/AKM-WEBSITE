@@ -435,7 +435,7 @@ const Vacancies = () => {
 
     return (
         <div className="section-column">
-            <p className='Title-Header'>Vakansiyalar</p>
+            <p className='Title-Header'>Vakansİyalar</p>
             {/* ADD conditional class for width toggle */}
             <div className={`Section-Sort-Group ${isCompactSortGroup ? 'compact' : ''}`}>
 

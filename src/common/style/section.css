@@ -1,10 +1,15 @@
-.Title-Header {
+/* .Title-Header {
     font-weight: 600;
-    /* font-size: 30px !important; */
     font-size: var(--font-36px);
     text-align: center;
     padding-inline: var(--safe-place);
-    /* text-transform: uppercase; */
+} */
+.Title-Header {
+    font-weight: 600;
+    font-size: 30px !important;
+    text-align: center;
+    padding-inline: var(--safe-place);
+    text-transform: uppercase;
 }
 
 .section-column {
@@ -15,6 +20,10 @@
     justify-content: center;
     gap: var(--safe-place);
     padding: calc(var(--safe-place) * 2) 0;
+}
+
+.section-column0 {
+    gap: 0 !important;
 }
 
 .section-column1 {
@@ -46,6 +55,12 @@
     align-items: center;
     width: 100%;
     max-width: 100rem;
+}
+
+.Section-Card0 {
+
+    padding: 0 var(--safe-place) var(--safe-place) var(--safe-place);
+
 }
 
 .Section-Card1 {
@@ -748,6 +763,11 @@
         width: 25rem !important;
     }
 
+    .SuccessMain0 {
+        height: 25rem;
+        width: 25rem !important;
+    }
+
     .SuccessMain img {
         width: 100%;
         height: 100%;
@@ -783,6 +803,9 @@
         width: 100% !important;
         /* height: fit-content !important; */
     }
+
+
+
 
     .SuccessMain img {
         width: 100%;
@@ -880,11 +903,10 @@
         display: flex;
         flex-direction: column;
     }
+.SuccessMain0 {
+    width: 100% !important;
+}
 
-    .SuccessMain {
-        width: 100% !important;
-        height: 20rem !important;
-    }
 
     .SuccessMain img {
         width: 100% !important;
@@ -947,7 +969,7 @@
     .social-footer-group {
         display: flex;
         align-items: start;
-        flex-direction: column;
+
         justify-content: center;
         gap: 1.5rem;
         /* padding: 2rem 0 !important; */
@@ -970,7 +992,7 @@
     height: 100%;
 }
 
-.SuccessMain {
+/* .SuccessMain {
     height: fit-content;
     width: 40rem;
     object-fit: cover;
@@ -978,7 +1000,14 @@
     border-radius: var(--main-radius);
     padding: var(--inner-safe-gap);
     box-shadow: var(--main-shadow);
-}
+} */
+
+/* .SuccessMain {
+    width: 100% !important;
+    height: 20rem !important;
+} */
+
+
 
 .SuccessMain0 {
     height: fit-content;
@@ -1026,16 +1055,16 @@
 
 
 .image-container-grid {
-  display: grid;
-  place-items: center;
+    display: grid;
+    place-items: center;
 }
 
 .image-container-grid img {
-  grid-row: 1;
-  grid-column: 1;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    grid-row: 1;
+    grid-column: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 

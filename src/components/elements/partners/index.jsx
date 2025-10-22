@@ -100,7 +100,7 @@ const Partners = () => {
         <div className="section-column" onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}>
 
-            <p className='Title-Header'>Təhsil tərəfdaşlarımız</p>
+            <p className='Title-Header'>Təhsİl tərəfdaşlarımız</p>
             <p className='section-description'>Tərəfdaşlıq etdiyimiz təhsil müəssisələri ilə birgə gənclərin bilik və bacarıqlarının inkişafına dəstək oluruq. Bu əməkdaşlıqlar sayəsində tələbə və məzunlar üçün daha geniş karyera və təcrübə imkanları yaradırıq.</p>
 
             <div className="Section-Card-Group">

@@ -95,7 +95,7 @@ const Admission = () => {
     <div className="section-column" onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}>
 
-      <p className='Title-Header'>Mərkəzimizdə işə qəbul prosesi</p>
+      <p className='Title-Header'>Mərkəzİmİzdə İşə qəbul prosesİ</p>
       <p className='section-description'>Mərkəzimizdə işə qəbul prosesi aşağıdakı mərhələ ardıcıllığına uyğun olaraq həyata keçirilir:</p>
       {/* <div className="Arrow-Group">
         <div className="Arrow-Tail"></div>

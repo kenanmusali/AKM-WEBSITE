@@ -88,7 +88,7 @@ const Advantages = () => {
     <div className="section-column" onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}>
 
-      <p className='Title-Header'>Üstünlüklərimiz</p>
+      <p className='Title-Header'>Üstünlüklərİmİz</p>
       {/* <p className='section-description'></p> */}
 
       <div className="Section-Card-Group">
