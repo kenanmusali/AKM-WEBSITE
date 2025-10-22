@@ -725,6 +725,11 @@
 
     margin: var(--inner-safe-place);
 }
+.Cards-Item-grid:hover {
+
+  outline: 2px solid var(--primary-color-half-opacity);
+  border-radius: var(--main-radius);
+}
 
 .Cards-Item-grid:hover .Cards-Item-Bio p {
     color: var(--primary-color);
@@ -735,8 +740,23 @@
 }
 
 .Cards-Item-grid:hover .Classic-Button {
-    border: 1px solid var(--primary-color-half-opacity);
+    /* border: 1px solid var(--primary-color-half-opacity); */
+        /* color: var(--white-color);
+        background-color: var(--primary-color); */
 }
+
+.Cards-Item-grid:hover .Classic-Button a{
+        color: var(--primary-color) !important;
+        font-weight: 400;
+}
+
+.Cards-Item-grid .Classic-Button:hover  a{
+    /* outline: 2px solid var(--primary-color-half-opacity); */
+        color: var(--white-color) !important;
+
+}
+
+
 
 .Section-Icons-grid {
     filter: var(--primary-color-filter);
