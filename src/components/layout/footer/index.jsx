@@ -21,7 +21,7 @@ const Footer = () => {
                     <img src={logo5IMG} class="Logo-Marks No-Select" />
                 </div>
                 <div className="social-footer-group">
-                    <p>Biz sosial şəbəkələrdən izləyin:</p>
+                    <p>Biz sosial şəbəkədən izləyin:</p>
                     <div className="social-icons">
                         {/* <a href="https://www.facebook.com/absheroncareer/" target="_blank">
                             <img src={fbIMG} class=" No-Select" />
