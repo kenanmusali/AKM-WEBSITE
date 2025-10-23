@@ -175,9 +175,9 @@ const HeaderVideoComponent = () => {
                                 <a href="https://www.instagram.com/absheron_logistika_merkezi/" target='_blank' className='Classic-a'><img src={IgImg} /></a>
                                 <a href="https://www.linkedin.com/company/29215371/admin/feed/posts/" target='_blank' className='Classic-a'><img src={InImg} /></a>
                                 <a href="https://twitter.com/AbseronPort" target='_blank' className='Classic-a'><img src={XImg} /></a>
-                                <a href="" target='_blank' className='Classic-a'><img src={WaImg} /></a>
-                                <a href="" target='_blank' className='Classic-a'><img src={TgImg} /></a>
-                                <a href="" target='_blank' className='Classic-a'><img src={YtImg} /></a>
+                                <a href="https://whatsapp.com/channel/0029VaDMDgr1Hsq5J7Z9dU3N" target='_blank' className='Classic-a'><img src={WaImg} /></a>
+                                <a href="https://t.me/abseronlogistikamerkezi" target='_blank' className='Classic-a'><img src={TgImg} /></a>
+                                <a href="https://www.youtube.com/channel/UC95XJEvzTS0LGje_T-htSqA" target='_blank' className='Classic-a'><img src={YtImg} /></a>
 
                             </div>
                             <div className="SectionTextGroupBgGroup">
