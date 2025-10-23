@@ -9,7 +9,7 @@ import WImg from '../../../assets/svg/www.Bubble.svg';
 import InImg from '../../../assets/svg/in.Bubble.svg';
 import WaImg from '../../../assets/svg/wa.Bubble.svg';
 import YtImg from '../../../assets/svg/yt.Bubble.svg';
-import TgImg from '../../../assets/svg/Tg.Bubble.svg';
+import TgImg from '../../../assets/svg/tg.Bubble.svg';
 
 const PlayCursor = '/play.bubble.svg';
 const PauseCursor = '/pause.bubble.svg';
