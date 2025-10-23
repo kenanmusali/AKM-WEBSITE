@@ -10,7 +10,6 @@ import ClockImage from '../../../assets/svg/clock.arrow.circlepath.svg';
 import CloseImage from '../../../assets/svg/close.bubble.svg';
 import EyeImage from '../../../assets/svg/eye.svg';
 import SearchImage from '../../../assets/svg/magnifyingglass.svg';
-import LoadingCareers from '../snackbar/loading';
 
 const Vacancies = () => {
     const [isColumnLayout, setIsColumnLayout] = useState(true);
@@ -36,7 +35,7 @@ const Vacancies = () => {
     const [originalArrayData, setOriginalArrayData] = useState([]);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
-    const [isCompactSortGroup, setIsCompactSortGroup] = useState(false);
+    const [isCompactSortGroup, setIsCompactSortGroup] = useState(false); // NEW STATE FOR WIDTH TOGGLE
 
     // Fetch career data from GitHub
     useEffect(() => {
@@ -75,7 +74,7 @@ const Vacancies = () => {
         fetchCareerData();
     }, []);
 
-    // Load ALL job descriptions from GitHub API
+    // Load job descriptions
     useEffect(() => {
         const loadJobDescriptions = async () => {
             if (originalArrayData.length === 0) return;
@@ -85,9 +84,25 @@ const Vacancies = () => {
 
                 for (const job of originalArrayData) {
                     try {
-                        // ALL descriptions come from remote source
-                        if (job.descriptionKey) {
-                            const fileUrl = `https://raw.githubusercontent.com/Absheron-Career-Portal/STORAGE/refs/heads/main/public/docs/${job.descriptionKey}.txt`;
+                        // Check job range to decide local or remote source
+                        if (job.id >= 0 && job.id <= 10) {
+                            // ✅ LOCAL LOAD (for 0–10)
+                            if (job.descriptionKey) {
+                                const response = await import(`../../../assets/docs/${job.descriptionKey}.txt`);
+                                const text = await fetch(response.default).then(res => res.text());
+                                descriptions[job.id] = text;
+                            } else {
+                                descriptions[job.id] = "Description not available.";
+                            }
+                        } else {
+                            //  REMOTE LOAD (for 11, 12, 13, etc.)
+                            let descriptionPath = job.descriptionKey;
+
+                            // Handle specific edge cases for 11–13
+  
+             
+
+                            const fileUrl = `https://raw.githubusercontent.com/Absheron-Career-Portal/STORAGE/refs/heads/main/public/docs/${descriptionPath}.txt`;
                             const response = await fetch(fileUrl);
 
                             if (response.ok) {
@@ -96,8 +111,6 @@ const Vacancies = () => {
                             } else {
                                 descriptions[job.id] = "Təsvir tapılmadı və ya mövcud deyil.";
                             }
-                        } else {
-                            descriptions[job.id] = "Description not available.";
                         }
                     } catch (error) {
                         console.error(`Error loading description for job ${job.id}:`, error);
@@ -205,18 +218,21 @@ const Vacancies = () => {
         };
     }, [showPopup]);
 
+    // KEEP the existing layout toggle function
     const toggleLayout = () => {
         setIsColumnLayout(!isColumnLayout);
         setAnimationKey(prevKey => prevKey + 1);
     };
 
+    // ADD new function for width toggle
     const toggleSortGroupWidth = () => {
         setIsCompactSortGroup(!isCompactSortGroup);
     };
 
+    // MODIFIED: Now the first sort button does BOTH layout toggle AND width toggle
     const handleFirstSortClick = () => {
-        toggleLayout();
-        toggleSortGroupWidth();
+        toggleLayout(); // Keep the original layout toggle
+        toggleSortGroupWidth(); // Add the new width toggle
     };
 
     const toggleSortByDate = () => {
@@ -413,15 +429,17 @@ const Vacancies = () => {
     };
 
     if (isLoading) {
-        return <div className="section-column "><LoadingCareers /> </div>;
+        return <div className="section-column "><div className="Snackbar-Style"><img src={ArrayData0Svg} /><p>Vakansiyalar Yüklənir...</p></div> </div>;
     }
 
     return (
         <div className="section-column">
             <p className='Title-Header'>Vakansİyalar</p>
+            {/* ADD conditional class for width toggle */}
             <div className={`Section-Sort-Group ${isCompactSortGroup ? 'compact' : ''}`}>
 
                 <div className="Section-Sort-Left">
+                    {/* CHANGE onClick to handleFirstSortClick which does BOTH functions */}
                     <div className="Sorts animated-1" onClick={handleFirstSortClick}>
                         {isColumnLayout ? (
                             <img src={SortColumnImage} className='No-Select' alt="Column layout" />
@@ -551,22 +569,44 @@ const Vacancies = () => {
                                                 </div>
                                             )}
                                         </div>
+                                        {/* <div className="job-description">
+                                            <p style={{ whiteSpace: 'pre-line' }}>
+                                                {jobDescriptions[selectedJob.id]?.split('\n').map((line, index) => {
+                                                    const trimmedLine = line.trim();
+                                                    const upperCaseLine = trimmedLine.toUpperCase();
+
+                                                    if (upperCaseLine.startsWith('ÜMUMİ VƏZİFƏ ÖHDƏLİKLƏRİ:') ||
+                                                        upperCaseLine.startsWith('NAMİZƏDƏ QARŞI TƏLƏBLƏR:') ||
+                                                        upperCaseLine.startsWith('PEŞƏKARLIK BACARIQLARI:')) {
+                                                        return (
+                                                            <strong key={index} style={{ textTransform: 'uppercase' }}>
+                                                                {trimmedLine}
+                                                            </strong>
+                                                        );
+                                                    }
+                                                    return line;
+                                                }).reduce((acc, line, index) => {
+                                                    if (acc === null) return [line];
+                                                    return [...acc, <br key={`br-${index}`} />, line];
+                                                }, null)}
+                                            </p>
+                                        </div> */}
                                         <div className="job-description">
                                             <p style={{ whiteSpace: 'pre-line' }}>
                                                 {jobDescriptions[selectedJob.id]?.split('\n').map((line, index) => {
                                                     const trimmedLine = line.trim();
                                                     const upperCaseLine = trimmedLine.toUpperCase();
 
-                                                    if (upperCaseLine.includes('ÜMUMİ VƏZİFƏ ÖHDƏLİKLƏRİ:') ||
-                                                        upperCaseLine.includes('Ümumi vəzifə öhdəlikləri:') ||
-                                                        upperCaseLine.includes('ümumi vəzifə öhdəlikləri:') ||
+                                                    if (upperCaseLine.includes('ÜMUMİ VƏZİFƏ ÖHDƏLİKLƏRİ:') ||  
+                                                        upperCaseLine.includes('Ümumi vəzifə öhdəlikləri:') ||   
+                                                        upperCaseLine.includes('ümumi vəzifə öhdəlikləri:') ||  
 
-                                                        upperCaseLine.includes('NAMİZƏDƏ QARŞI TƏLƏBLƏR:') ||
-                                                        upperCaseLine.includes('Namizədə qarşı tələblər:') ||
-                                                        upperCaseLine.includes('namizədə qarşı tələblər:') ||
+                                                        upperCaseLine.includes('NAMİZƏDƏ QARŞI TƏLƏBLƏR:') ||   
+                                                        upperCaseLine.includes('Namizədə qarşı tələblər:') ||   
+                                                        upperCaseLine.includes('namizədə qarşı tələblər:') ||   
 
-                                                        upperCaseLine.includes('PEŞƏKARLIQ BACARIQLARI:') ||
-                                                        upperCaseLine.includes('Peşəkarlıq bacarıqları:') ||
+                                                        upperCaseLine.includes('PEŞƏKARLIQ BACARIQLARI:') ||   
+                                                        upperCaseLine.includes('Peşəkarlıq bacarıqları:') ||   
                                                         upperCaseLine.includes('peşəkarlıq bacarıqları:')
                                                     ) {
                                                         return (

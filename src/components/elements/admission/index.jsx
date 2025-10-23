@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ChevronCircleLeftActiveImg from '../../../assets/svg/chevron.circle.left.active.svg';
 import ChevronCircleRightActiveImg from '../../../assets/svg/chevron.circle.right.active.svg';
 
@@ -12,10 +12,8 @@ import ArrayData7Img from '../../../assets/svg/signature.svg';
 import ArrayData8Img from '../../../assets/svg/calendar.badge.clock.svg';
 import PolygonImg from '../../../assets/svg/Polygon.svg';
 
-
 const Admission = () => {
   const ArrayData = [
-
     { id: 0, image: ArrayData1Img, title: 'İş elanının yayımlanması', description: 'Services are delivered with exceptional standards and meticulous attention to detail.', order: 1 },
     { id: 1, image: ArrayData2Img, title: 'Namizədlərin müraciəti', description: 'New ideas and advanced technologies are embraced to ensure forward-thinking solutions.', order: 2 },
     { id: 2, image: ArrayData3Img, title: 'CV dəyərləndirmə mərhələsi', description: 'Every interaction is built on transparency, truthfulness, and ethical behavior.', order: 3 },
@@ -24,16 +22,34 @@ const Admission = () => {
     { id: 5, image: ArrayData6Img, title: 'İş təklifinin verilməsi', description: 'Operations are designed to minimize environmental impact and promote sustainability.', order: 6 },
     { id: 6, image: ArrayData7Img, title: 'İşə qəbul prosesinin rəsmiləşdirilməsi', description: 'Commitments are honored with full responsibility for outcomes and actions.', order: 7 },
     { id: 7, image: ArrayData8Img, title: 'Uyğunlaşma və adaptasiya prosesi', description: 'Commitments are honored with full responsibility for outcomes and actions.', order: 8 },
-
-
-
-
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [itemsPerPage, setItemsPerPage] = useState(5);
   const [shouldHideNav, setShouldHideNav] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const sectionRef = useRef(null);
+
+  // Add intersection observer
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -55,7 +71,6 @@ const Admission = () => {
       } else {
         setItemsPerPage(8);
       }
-
 
       setShouldHideNav(ArrayData.length === 8 && width >= 1625);
     };
@@ -92,15 +107,15 @@ const Admission = () => {
   const isAtEnd = currentIndex >= ArrayData.length - itemsPerPage;
 
   return (
-    <div className="section-column" onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}>
-
+    <div 
+      className="section-column" 
+      ref={sectionRef}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <p className='Title-Header'>Mərkəzİmİzdə İşə qəbul prosesİ</p>
       <p className='section-description'>Mərkəzimizdə işə qəbul prosesi aşağıdakı mərhələ ardıcıllığına uyğun olaraq həyata keçirilir:</p>
-      {/* <div className="Arrow-Group">
-        <div className="Arrow-Tail"></div>
-        <div className="Arrow-Head"><img src={PolygonImg}/></div>
-      </div> */}
+      
       <div className="Section-Card-Group">
         <div className={`Card-Left ${shouldHideNav ? 'hide' : ''} No-Select`}>
           <button onClick={goToPrev} className="nav-button">
@@ -113,8 +128,11 @@ const Admission = () => {
         </div>
 
         <div className="Section-Card">
-          {visibleItems.map((item) => (
-            <div className="Cards Admission-Card Main-Card" key={item.id}>
+          {visibleItems.map((item, index) => (
+            <div 
+              className={`Cards Admission-Card Main-Card ${isInView ? 'scale-animate' : ''}`} 
+              key={item.id}
+            >
               <div className="Cards-Item SectionNumCard">
                 <img src={item.image} className='No-Select Section-Icons' />
                 <p>{item.title}</p>
