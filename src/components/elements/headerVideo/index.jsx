@@ -7,6 +7,9 @@ import FbImg from '../../../assets/svg/fb.Bubble.svg';
 import IgImg from '../../../assets/svg/ig.Bubble.svg';
 import WImg from '../../../assets/svg/www.Bubble.svg';
 import InImg from '../../../assets/svg/in.Bubble.svg';
+import WaImg from '../../../assets/svg/wa.Bubble.svg';
+import YtImg from '../../../assets/svg/yt.Bubble.svg';
+import TgImg from '../../../assets/svg/Tg.Bubble.svg';
 
 const PlayCursor = '/play.bubble.svg';
 const PauseCursor = '/pause.bubble.svg';
@@ -16,7 +19,7 @@ const HeaderVideoComponent = () => {
         {
             id: 0,
             image: ArrayData1Img,
-            title: 'Abşeron Logistika Mərkəzi Karyera Plaforması',
+            title: 'Abşeron Logistika Mərkəzi Karyera Platforması',
             description: 'Abşeron Logistika Mərkəzinin Karyera Portalı yeni əməkdaşların Mərkəzə cəlb olunması, işə qəbul prosesinin tənzimlənməsi və əməkdaşların inkişafının təmini məqsədilə yaradılıb. Mərkəzimiz iş imkanları ilə yanaşı ödənişli təcrübə proqramları vasitəsilə gənc mütəxəssislərə real iş mühitində bilik və bacarıqlarını inkişaf etdirmək imkanı təqdim edir.\n\nMüxtəlif təhsil müəssisələri ilə qurulan əməkdaşlıqlar sayəsində tələbə və məzunlar üçün karyera və təcrübə mübadiləsi imkanları genişləndirilir. Mövcud əməkdaşların peşəkar inkişafı isə xüsusi təlimlər, mentorluq və inkişaf proqramları ilə dəstəklənir. Biz inanırıq ki, insan kapitalına qoyulan sərmayə şirkətin ən mühüm uğur faktorudur. İnsan resurları komandamız, həmçinin şəffaf seçim prosesi və ədalətli qiymətləndirmə sistemi ilə karyera yüksəlişinə zəmin yaradır.\n\nBurada hər bir əməkdaşın töhfəsi dəyərləndirilir və onların uğurları komandanın ümumi nailiyyəti kimi qəbul olunur. Karyera Portalı yeni istedadların şirkətə inteqrasiyası ilə yanaşı, mövcud əməkdaşların da uzunmüddətli inkişafına dəstək verir. İş mühitimiz əməkdaşlıq, hörmət və komanda ruhu prinsiplərinə əsaslanır.\n\nAbşeron Logistika Mərkəzində komandasında çalışmaq yalnızca iş yeri deyil, həm də öyrənmək, təcrübə qazanmaq və yeni bacarıqlar inkişaf etdirmək üçün geniş fürsətidir.'
         },
     ];
@@ -167,11 +170,15 @@ const HeaderVideoComponent = () => {
                                     <h2 className='item-desc' style={{ whiteSpace: 'pre-line' }}>{item.description}</h2>
                                 </div>
                             </div> */} <div className="Image-Social">
-                                <img src={WImg} />
-                                <img src={FbImg} />
-                                <img src={IgImg} />
-                                <img src={InImg} />
-                                <img src={XImg} />
+                                <a href="https://absheronport.az/az" target='_blank' className='Classic-a'><img src={WImg} /></a>
+                                <a href="https://www.facebook.com/AbsheronLogisticsCenter#" target='_blank' className='Classic-a'><img src={FbImg} /></a>
+                                <a href="https://www.instagram.com/absheron_logistika_merkezi/" target='_blank' className='Classic-a'><img src={IgImg} /></a>
+                                <a href="https://www.linkedin.com/company/29215371/admin/feed/posts/" target='_blank' className='Classic-a'><img src={InImg} /></a>
+                                <a href="https://twitter.com/AbseronPort" target='_blank' className='Classic-a'><img src={XImg} /></a>
+                                <a href="" target='_blank' className='Classic-a'><img src={WaImg} /></a>
+                                <a href="" target='_blank' className='Classic-a'><img src={TgImg} /></a>
+                                <a href="" target='_blank' className='Classic-a'><img src={YtImg} /></a>
+
                             </div>
                             <div className="SectionTextGroupBgGroup">
                                 <div className="SectionTextGroupBg">

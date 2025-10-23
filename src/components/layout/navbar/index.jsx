@@ -46,7 +46,9 @@ const Navbar = () => {
                         <div className='Nav-End-items' onClick={() => scrollToSection('activities')}>
                             <ActivitiesItem />
                         </div>
-                        <LMS />
+                        <div className='Nav-End-items'>
+                            <LMS />
+                        </div>
                         <ContactItem />
                     </span>
                 </div>

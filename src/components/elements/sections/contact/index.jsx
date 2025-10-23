@@ -14,9 +14,11 @@ const ContactItem = () => {
   }, []);
 
   return (
+      <a href="https://absheronport.az/az" target='_blank' className='Classic-a'>
     <div className='Main-Button Main-text'>
-      {isMobile ? 'ALM' : 'ABŞERON LOGİSTİKA MƏRKƏZİ'}
+        {isMobile ? 'ALM' : 'ABŞERON LOGİSTİKA MƏRKƏZİ'}
     </div>
+      </a>
   );
 };
 

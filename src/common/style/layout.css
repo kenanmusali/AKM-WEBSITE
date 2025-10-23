@@ -257,7 +257,13 @@
 }
 
 @media (max-width: 768px) {
+.Nav-End-items {
+    display: none;
+}
 
+.Image-Social {
+    display: none !important;
+}
 
 }
 
@@ -281,4 +287,7 @@
   .Footer-Group {
     padding-top: 0;
   }
+}
+.Nav-End .Nav-End-items:nth-child(4) {
+  display: none;
 }

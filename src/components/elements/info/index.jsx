@@ -10,12 +10,38 @@ import Header5Img from '../../../assets/image/header/FrameHeader5.png';
 import Header6Img from '../../../assets/image/header/FrameHeader6.png';
 import Header7Img from '../../../assets/image/header/FrameHeader7.png';
 import Header8Img from '../../../assets/image/header/FrameHeader8.png';
+import Header0MobileImg from '../../../assets/image/header/FrameHeader0.mobile.png';
+import Header1MobileImg from '../../../assets/image/header/FrameHeader1.mobile.png';
+import Header2MobileImg from '../../../assets/image/header/FrameHeader2.mobile.png';
+import Header3MobileImg from '../../../assets/image/header/FrameHeader3.mobile.png';
+import Header4MobileImg from '../../../assets/image/header/FrameHeader4.mobile.png';
+import Header5MobileImg from '../../../assets/image/header/FrameHeader5.mobile.png';
+import Header6MobileImg from '../../../assets/image/header/FrameHeader6.mobile.png';
+import Header7MobileImg from '../../../assets/image/header/FrameHeader7.mobile.png';
+import Header8MobileImg from '../../../assets/image/header/FrameHeader8.mobile.png';
 
 const Info = () => {
+    const [isMobile, setIsMobile] = useState(false);
+    
+    // Check if screen is mobile size
+    useEffect(() => {
+        const checkScreenSize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        checkScreenSize();
+        window.addEventListener('resize', checkScreenSize);
+
+        return () => window.removeEventListener('resize', checkScreenSize);
+    }, []);
+
     const ArrayData = [
         {
             id: 0,
-            images: [
+            images: isMobile ? [
+                Header0MobileImg, Header1MobileImg, Header2MobileImg, Header3MobileImg, Header4MobileImg,
+                Header5MobileImg, Header6MobileImg, Header7MobileImg, Header8MobileImg
+            ] : [
                 Header0Img, Header1Img, Header2Img, Header3Img, Header4Img,
                 Header5Img, Header6Img, Header7Img, Header8Img
             ],

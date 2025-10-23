@@ -79,7 +79,7 @@ const Info = () => {
     return (
         <div className="section-column" onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}>
-     <p className='Title-Header'>Abşeron Logistika Mərkəzi Karyera Plaforması</p>
+     <p className='Title-Header'>Abşeron Logistika Mərkəzi Karyera Platforması</p>
             {/* <p className='section-description'>Tərəfdaşlıq etdiyimiz təhsil müəssisələri ilə birgə gənclərin bilik və bacarıqlarının inkişafına dəstək oluruq. Bu əməkdaşlıqlar sayəsində tələbə və məzunlar üçün daha geniş karyera və təcrübə imkanları yaradırıq.</p> */}
             <div className="Section-Card-Group SuccessCardGroup InfoCardGroup">
                 <div className={`Card-Left ${shouldHideNav ? 'hide' : ''} No-Select`}>

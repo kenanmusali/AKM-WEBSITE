@@ -65,6 +65,15 @@
   -webkit-animation: fade-in-down 0.7s ease 1;
 }
 
+ .Classic-a{
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
 .Main-Button {
   position: relative;
   background: linear-gradient(to bottom, var(--low-shade-light-blue-color), var(--high-shade-light-blue-color));
