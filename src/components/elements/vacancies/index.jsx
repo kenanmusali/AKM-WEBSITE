@@ -605,7 +605,7 @@ const Vacancies = () => {
                                                         upperCaseLine.includes('Namizədə qarşı tələblər:') ||   
                                                         upperCaseLine.includes('namizədə qarşı tələblər:') ||   
 
-                                                        upperCaseLine.includes('PEŞƏKARLIK BACARIQLARI:') ||   
+                                                        upperCaseLine.includes('PEŞƏKARLIQ BACARIQLARI:') ||   
                                                         upperCaseLine.includes('Peşəkarlıq bacarıqları:') ||   
                                                         upperCaseLine.includes('peşəkarlıq bacarıqları:')
                                                     ) {

@@ -731,6 +731,10 @@
   border-radius: var(--main-radius);
 }
 
+.Cards-Item-grid:hover .Classic-Button {
+  border: 1px solid var(--light-gray-color);
+}
+
 .Cards-Item-grid:hover .Cards-Item-Bio p {
     color: var(--primary-color);
 }
