@@ -1186,6 +1186,7 @@
 }
 
 .Image-Social img {
+    border-radius: var(--main-radius);
     box-shadow: var(--main-shadow);
     height: 26px;
   transition: 0.2s all;
