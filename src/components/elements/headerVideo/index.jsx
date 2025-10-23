@@ -169,7 +169,7 @@ const HeaderVideoComponent = () => {
                                     <h1>{item.title}</h1>
                                     <h2 className='item-desc' style={{ whiteSpace: 'pre-line' }}>{item.description}</h2>
                                 </div>
-                            </div> */} <div className="Image-Social">
+                            </div> */} <div className="Image-Social No-Select">
                                 <a href="https://absheronport.az/az" target='_blank' className='Classic-a'><img src={WImg} /></a>
                                 <a href="https://www.facebook.com/AbsheronLogisticsCenter#" target='_blank' className='Classic-a'><img src={FbImg} /></a>
                                 <a href="https://www.instagram.com/absheron_logistika_merkezi/" target='_blank' className='Classic-a'><img src={IgImg} /></a>
