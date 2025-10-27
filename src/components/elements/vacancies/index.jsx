@@ -744,7 +744,7 @@ const Vacancies = () => {
 
                                     )}
 
-                                    <button type="submit" className="Main-Button">Müraciəti göndər</button>
+                                    <button type="submit" className="Main-Button">MÜRACİƏTİ GÖNDƏR</button>
                                 </form>
                             </div>
                         </div>

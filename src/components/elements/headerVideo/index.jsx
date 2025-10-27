@@ -182,7 +182,7 @@ const HeaderVideoComponent = () => {
                             </div>
                             <div className="SectionTextGroupBgGroup">
                                 <div className="SectionTextGroupBg ">
-                                    <p className='animated-1'>PEŞƏKAR UĞUR BURADAN BAŞLAYIR</p>
+                                    <p className='animated-1'>DƏYƏRLƏR, İNKİŞAF, UĞUR, GƏLƏCƏK</p>
                                     {/* <p>Peşəkar uğur buradan başlayır</p> */}
                                     <p className='animated-2'>Abşeron Logistika Mərkəzi olaraq istedadlı və gənc mütəxəssislər üçün səmərəli və inklüziv karyera imkanları təqdim edirik. Bizim bilik və bacarıqları dəyərləndirir, davamlı inkişafı dəstəkləyirik.</p>
 
