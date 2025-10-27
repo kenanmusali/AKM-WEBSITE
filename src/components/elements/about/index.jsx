@@ -2,7 +2,7 @@ import React from 'react'
 
 const AboutItem = () => {
     return (
-        <div className='items'>Haqqımızda</div>
+        <div className='items'>HAQQIMIZDA</div>
     )
 }
 

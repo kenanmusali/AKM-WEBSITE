@@ -169,23 +169,21 @@ const HeaderVideoComponent = () => {
                                     <h1>{item.title}</h1>
                                     <h2 className='item-desc' style={{ whiteSpace: 'pre-line' }}>{item.description}</h2>
                                 </div>
-                            </div> */} <div className="Image-Social No-Select">
-                                <a href="https://absheronport.az/az" target='_blank' className='Classic-a animated-1'><img src={WImg} /></a>
+                            </div> */}
+                            <div className="Image-Social No-Select">
+                                {/* <a href="https://absheronport.az/az" target='_blank' className='Classic-a animated-1'><img src={WImg} /></a> */}
                                 <a href="https://www.facebook.com/AbsheronLogisticsCenter#" target='_blank' className='Classic-a animated-2'><img src={FbImg} /></a>
-                                <a href="https://www.instagram.com/absheron_logistika_merkezi/" target='_blank' className='Classic-a animated-3'><img src={IgImg} /></a>
+                                <a href="https://www.instagram.com/absheron_logistics_center/" target='_blank' className='Classic-a animated-3'><img src={IgImg} /></a>
                                 <a href="https://www.linkedin.com/company/29215371/admin/feed/posts/" target='_blank' className='Classic-a animated-4'><img src={InImg} /></a>
                                 <a href="https://twitter.com/AbseronPort" target='_blank' className='Classic-a animated-5'><img src={XImg} /></a>
                                 <a href="https://whatsapp.com/channel/0029VaDMDgr1Hsq5J7Z9dU3N" target='_blank' className='Classic-a animated-6'><img src={WaImg} /></a>
                                 <a href="https://t.me/abseronlogistikamerkezi" target='_blank' className='Classic-a animated-7'><img src={TgImg} /></a>
                                 <a href="https://www.youtube.com/channel/UC95XJEvzTS0LGje_T-htSqA" target='_blank' className='Classic-a animated-8'><img src={YtImg} /></a>
-
                             </div>
                             <div className="SectionTextGroupBgGroup">
                                 <div className="SectionTextGroupBg ">
                                     <p className='animated-1'>PEŞƏKAR UĞUR BURADAN BAŞLAYIR</p>
                                     {/* <p>Peşəkar uğur buradan başlayır</p> */}
-
-
                                     <p className='animated-2'>Abşeron Logistika Mərkəzi olaraq istedadlı və gənc mütəxəssislər üçün səmərəli və inklüziv karyera imkanları təqdim edirik. Bizim bilik və bacarıqları dəyərləndirir, davamlı inkişafı dəstəkləyirik.</p>
 
                                 </div>

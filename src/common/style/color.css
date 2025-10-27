@@ -3,7 +3,8 @@
     --lime-color-half-opacity: rgba(0, 255, 119, 0.5);
     --lime-color: #00FF78;
     --dark-lime-color: #00a34c;
-    --dark-lime-color-filter: brightness(0) saturate(100%) invert(67%) sepia(73%) saturate(6222%) hue-rotate(122deg) brightness(88%) contrast(101%);;
+    --dark-lime-color-filter: brightness(0) saturate(100%) invert(67%) sepia(73%) saturate(6222%) hue-rotate(122deg) brightness(88%) contrast(101%);
+    ;
     --yellow-color: #E9C01E;
     --yellow-color-filter: brightness(0) saturate(100%) invert(81%) sepia(72%) saturate(690%) hue-rotate(343deg) brightness(96%) contrast(90%);
     --yellow-color-half-opacity: rgba(233, 192, 30, 0.5);
@@ -28,6 +29,8 @@
     --opacity-050-white-color: rgba(255, 255, 255, 0.5);
     --opacity-100-white-color: rgba(255, 255, 255, 0);
     --opacity-003-black-color: rgba(0, 0, 0, 0.03);
+    --button-color-up: #5890FF;
+    --button-color-down: #48B4FA;
     --opacity-007-black-color: rgba(0, 0, 0, 0.1);
     --primary-color-filter: brightness(0) saturate(100%) invert(16%) sepia(72%) saturate(3870%) hue-rotate(213deg) brightness(93%) contrast(103%);
     --white-color-filter: brightness(0) saturate(100%) invert(99%) sepia(58%) saturate(487%) hue-rotate(152deg) brightness(124%) contrast(96%);

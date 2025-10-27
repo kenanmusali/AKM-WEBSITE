@@ -18,6 +18,8 @@
 
 .items {
     cursor: pointer;
+    font-weight: 500;
+    opacity: 0.9;
 
 }
 
@@ -28,7 +30,7 @@
 
 .items:hover {
     color: var(--primary-color);
-
+opacity: 1;
 }
 
 .Navbar-Group::before {

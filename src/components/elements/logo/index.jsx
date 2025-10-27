@@ -5,12 +5,17 @@ import '../../../common/style/root.css';
 
 const LogoMark = () => {
   return (
-    <Link to='/' className='Center-Objects No-Select'>
-      <img
-        src={Logo}
-        className='Logo-Marks No-Select'
-      />
-    </Link>
+<Link 
+  to='/' 
+  className='Center-Objects No-Select'
+  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+>
+  <img
+    src={Logo}
+    className='Logo-Marks No-Select'
+    alt="Logo"
+  />
+</Link>
   );
 };
 

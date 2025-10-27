@@ -76,8 +76,10 @@
 
 .Main-Button {
   position: relative;
-  background: linear-gradient(to bottom, var(--low-shade-light-blue-color), var(--high-shade-light-blue-color));
-  color: var(--primary-color);
+  /* background: linear-gradient(to bottom, var(--low-shade-light-blue-color), var(--high-shade-light-blue-color)); */
+  background: linear-gradient(to bottom, var(--button-color-up), var(--button-color-down));
+  /* color: var(--primary-color); */
+  color: var(--white-color);
   height: 38px;
   width: fit-content;
   padding-inline: calc(var(--safe-place) * 1);
@@ -89,7 +91,7 @@
   align-items: center;
   justify-content: center;
   font-size: var(--font-14px);
-  font-weight: 500;
+  font-weight: 400;
   padding-bottom: 3px;
   animation: fade-in-down 0.7s ease 1;
   -webkit-animation: fade-in-down 0.7s ease 1;

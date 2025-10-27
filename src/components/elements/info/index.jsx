@@ -10,6 +10,7 @@ import Header5Img from '../../../assets/image/header/FrameHeader5.png';
 import Header6Img from '../../../assets/image/header/FrameHeader6.png';
 import Header7Img from '../../../assets/image/header/FrameHeader7.png';
 import Header8Img from '../../../assets/image/header/FrameHeader8.png';
+import Header9Img from '../../../assets/image/header/FrameHeader9.png';
 import Header0MobileImg from '../../../assets/image/header/FrameHeader0.mobile.png';
 import Header1MobileImg from '../../../assets/image/header/FrameHeader1.mobile.png';
 import Header2MobileImg from '../../../assets/image/header/FrameHeader2.mobile.png';
@@ -19,6 +20,8 @@ import Header5MobileImg from '../../../assets/image/header/FrameHeader5.mobile.p
 import Header6MobileImg from '../../../assets/image/header/FrameHeader6.mobile.png';
 import Header7MobileImg from '../../../assets/image/header/FrameHeader7.mobile.png';
 import Header8MobileImg from '../../../assets/image/header/FrameHeader8.mobile.png';
+import Header9MobileImg from '../../../assets/image/header/FrameHeader9.mobile.png';
+
 
 const Info = () => {
     const [isMobile, setIsMobile] = useState(false);
@@ -40,10 +43,10 @@ const Info = () => {
             id: 0,
             images: isMobile ? [
                 Header0MobileImg, Header1MobileImg, Header2MobileImg, Header3MobileImg, Header4MobileImg,
-                Header5MobileImg, Header6MobileImg, Header7MobileImg, Header8MobileImg
+                Header5MobileImg, Header6MobileImg, Header7MobileImg, Header8MobileImg, Header9MobileImg
             ] : [
                 Header0Img, Header1Img, Header2Img, Header3Img, Header4Img,
-                Header5Img, Header6Img, Header7Img, Header8Img
+                Header5Img, Header6Img, Header7Img, Header8Img, Header9Img
             ],
             description:
                 'Abşeron Logistika Mərkəzinin Karyera Portalı yeni əməkdaşların Mərkəzə cəlb olunması, işə qəbul prosesinin tənzimlənməsi və əməkdaşların inkişafının təmini məqsədilə yaradılıb. Mərkəzimiz iş imkanları ilə yanaşı ödənişli təcrübə proqramları vasitəsilə gənc mütəxəssislərə real iş mühitində bilik və bacarıqlarını inkişaf etdirmək imkanı təqdim edir.\n\nMüxtəlif təhsil müəssisələri ilə qurulan əməkdaşlıqlar sayəsində tələbə və məzunlar üçün karyera və təcrübə mübadiləsi imkanları genişləndirilir. Mövcud əməkdaşların peşəkar inkişafı isə xüsusi təlimlər, mentorluq və inkişaf proqramları ilə dəstəklənir. Biz inanırıq ki, insan kapitalına qoyulan sərmayə şirkətin ən mühüm uğur faktorudur. İnsan resurları komandamız, həmçinin şəffaf seçim prosesi və ədalətli qiymətləndirmə sistemi ilə karyera yüksəlişinə zəmin yaradır.\n\nBurada hər bir əməkdaşın töhfəsi dəyərləndirilir və onların uğurları komandanın ümumi nailiyyəti kimi qəbul olunur. Karyera Portalı yeni istedadların şirkətə inteqrasiyası ilə yanaşı, mövcud əməkdaşların da uzunmüddətli inkişafına dəstək verir. İş mühitimiz əməkdaşlıq, hörmət və komanda ruhu prinsiplərinə əsaslanır.\n\nAbşeron Logistika Mərkəzində komandasında çalışmaq yalnızca iş yeri deyil, həm də öyrənmək, təcrübə qazanmaq və yeni bacarıqlar inkişaf etdirmək üçün geniş fürsətidir.'
@@ -98,7 +101,7 @@ const Info = () => {
 
     return (
         <div className="section-column section-column0" ref={sectionRef}>
-            <p className="Title-Header">Abşeron Logİstİka Mərkəzİ Karyera Plaforması</p>
+            <p className="Title-Header">Abşeron Logİstİka Mərkəzİ Karyera Platforması</p>
 
             <div className="Section-Card-Group SuccessCardGroup InfoCardGroup">
                 <div className="Card-Left No-Select">

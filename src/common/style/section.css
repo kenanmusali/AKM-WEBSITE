@@ -576,15 +576,6 @@
     box-sizing: border-box;
 }
 
-
-
-
-
-
-
-
-
-
 .Section-Sort-Left .Sorts:nth-child(3) {
     position: relative;
     z-index: 1;
@@ -611,23 +602,6 @@
     cursor: pointer;
     /* transition: opacity 0.3s ease; */
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .Section-Sort-Left .Sorts:nth-child(3):hover {
     border: 1px solid var(--primary-color);
@@ -1228,7 +1202,7 @@
     z-index: 1;
 
     height: calc(100% - (var(--safe-place) * 1));
-    width: 8rem;
+    width: 10rem;
     padding-bottom: var(--inner-safe-gap);
 }
 
@@ -1835,19 +1809,7 @@
     cursor: pointer;
 }
 
-
 /* ---------------------------------------------------------------------- */
-
-
-
-
-
-
-
-
-
-
-
 
 .popup-overlay {
     position: fixed;
@@ -2112,14 +2074,6 @@ video {
         }
     } */
 
-
-
-
-
-
-
-
-
 .Arrow-Group {
     position: absolute;
     height: fit-content;
@@ -2139,8 +2093,6 @@ video {
     height: 4rem;
     width: 90%;
     border-radius: var(--secondary-radius);
-
-
 }
 
 .Arrow-Head img {
