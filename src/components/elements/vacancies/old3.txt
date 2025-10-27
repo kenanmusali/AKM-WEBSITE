@@ -28,8 +28,7 @@ const Vacancies = () => {
         linkedin: ''
     });
 
-    const [isSortedByDate, setIsSortedByDate] = useState(false); // Default false - not active
-    const [isSortedByAtoZ, setIsSortedByAtoZ] = useState(false);
+    const [isSortedByDate, setIsSortedByDate] = useState(false);
     const [displayedData, setDisplayedData] = useState([]);
     const [showAll, setShowAll] = useState(false);
     const [itemsToShow, setItemsToShow] = useState(10);
@@ -67,10 +66,7 @@ const Vacancies = () => {
                 }));
 
                 setOriginalArrayData(transformedData);
-                
-                // Sort by date (newest to oldest) by default without activating the button
-                const sortedData = sortByDateNewestToOldest(transformedData);
-                setDisplayedData(sortedData.slice(0, itemsToShow));
+                setDisplayedData(transformedData.slice(0, itemsToShow));
             } catch (error) {
                 console.error('Error fetching career data:', error);
                 setIsLoading(false);
@@ -79,80 +75,6 @@ const Vacancies = () => {
 
         fetchCareerData();
     }, []);
-
-    // Sort function for newest to oldest (DEFAULT)
-    const sortByDateNewestToOldest = (data) => {
-        const firstItem = data.find(item => item.id === 0) || data[0];
-        const otherItems = data.filter(item => item.id !== 0);
-
-        const monthNames = {
-            'Yanvar': 1, 'Fevral': 2, 'Mart': 3, 'Aprel': 4, 'May': 5, 'Iyun': 6,
-            'Iyul': 7, 'Avqust': 8, 'Sentyabr': 9, 'Oktyabr': 10, 'Noyabr': 11, 'Dekabr': 12,
-            'January': 1, 'February': 2, 'March': 3, 'April': 4, 'Mays': 5, 'June': 6,
-            'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12
-        };
-
-        const sortedItems = [...otherItems].sort((a, b) => {
-            if (!a.date || !b.date) return 0;
-
-            const parseDate = (dateStr) => {
-                const parts = dateStr.replace(',', '').split(' ');
-                if (parts.length < 3) return new Date();
-
-                const [day, monthStr, year] = parts;
-                const month = monthNames[monthStr];
-                return new Date(year, month - 1, day);
-            };
-
-            return parseDate(b.date) - parseDate(a.date); // Newest to oldest
-        });
-
-        return [firstItem, ...sortedItems];
-    };
-
-    // Sort function for oldest to newest (WHEN BUTTON IS CLICKED)
-    const sortByDateOldestToNewest = (data) => {
-        const firstItem = data.find(item => item.id === 0) || data[0];
-        const otherItems = data.filter(item => item.id !== 0);
-
-        const monthNames = {
-            'Yanvar': 1, 'Fevral': 2, 'Mart': 3, 'Aprel': 4, 'May': 5, 'Iyun': 6,
-            'Iyul': 7, 'Avqust': 8, 'Sentyabr': 9, 'Oktyabr': 10, 'Noyabr': 11, 'Dekabr': 12,
-            'January': 1, 'February': 2, 'March': 3, 'April': 4, 'Mays': 5, 'June': 6,
-            'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12
-        };
-
-        const sortedItems = [...otherItems].sort((a, b) => {
-            if (!a.date || !b.date) return 0;
-
-            const parseDate = (dateStr) => {
-                const parts = dateStr.replace(',', '').split(' ');
-                if (parts.length < 3) return new Date();
-
-                const [day, monthStr, year] = parts;
-                const month = monthNames[monthStr];
-                return new Date(year, month - 1, day);
-            };
-
-            return parseDate(a.date) - parseDate(b.date); // Oldest to newest
-        });
-
-        return [firstItem, ...sortedItems];
-    };
-
-    // Sort function for A to Z
-    const sortByAtoZ = (data) => {
-        const firstItem = data.find(item => item.id === 0) || data[0];
-        const otherItems = data.filter(item => item.id !== 0);
-
-        const sortedItems = [...otherItems].sort((a, b) => {
-            const titleA = a.title || '';
-            const titleB = b.title || '';
-            return titleA.localeCompare(titleB);
-        });
-
-        return [firstItem, ...sortedItems];
-    };
 
     // Load ALL job descriptions from GitHub API
     useEffect(() => {
@@ -200,19 +122,35 @@ const Vacancies = () => {
         if (searchTerm.trim() === '') {
             // If search is empty, show normal data
             if (isSortedByDate) {
-                // When date button is active, show oldest to newest
-                const sortedData = sortByDateOldestToNewest(originalArrayData);
-                const limitedData = showAll ? sortedData : sortedData.slice(0, itemsToShow);
-                setDisplayedData(limitedData);
-            } else if (isSortedByAtoZ) {
-                const sortedData = sortByAtoZ(originalArrayData);
-                const limitedData = showAll ? sortedData : sortedData.slice(0, itemsToShow);
-                setDisplayedData(limitedData);
+                const firstItem = originalArrayData.find(item => item.id === 0) || originalArrayData[0];
+                const otherItems = originalArrayData.filter(item => item.id !== 0);
+
+                const monthNames = {
+                    'Yanvar': 1, 'Fevral': 2, 'Mart': 3, 'Aprel': 4, 'May': 5, 'Iyun': 6,
+                    'Iyul': 7, 'Avqust': 8, 'Sentyabr': 9, 'Oktyabr': 10, 'Noyabr': 11, 'Dekabr': 12,
+                    'January': 1, 'February': 2, 'March': 3, 'April': 4, 'Mays': 5, 'June': 6,
+                    'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12
+                };
+
+                const sortedItems = [...otherItems].sort((a, b) => {
+                    if (!a.date || !b.date) return 0;
+
+                    const parseDate = (dateStr) => {
+                        const parts = dateStr.replace(',', '').split(' ');
+                        if (parts.length < 3) return new Date();
+
+                        const [day, monthStr, year] = parts;
+                        const month = monthNames[monthStr];
+                        return new Date(year, month - 1, day);
+                    };
+
+                    return parseDate(b.date) - parseDate(a.date);
+                });
+
+                const limitedSortedItems = showAll ? sortedItems : sortedItems.slice(0, itemsToShow - 1);
+                setDisplayedData([firstItem, ...limitedSortedItems]);
             } else {
-                // Default: newest to oldest (button not active)
-                const sortedData = sortByDateNewestToOldest(originalArrayData);
-                const limitedData = showAll ? sortedData : sortedData.slice(0, itemsToShow);
-                setDisplayedData(limitedData);
+                setDisplayedData(showAll ? originalArrayData : originalArrayData.slice(0, itemsToShow));
             }
         } else {
             // If search term exists, filter data with proper null checking
@@ -226,22 +164,10 @@ const Vacancies = () => {
                     location.toLowerCase().includes(searchLower) ||
                     type.toLowerCase().includes(searchLower);
             });
-            
-            // Apply current sorting to filtered results
-            let sortedFilteredData = filteredData;
-            if (isSortedByDate) {
-                sortedFilteredData = sortByDateOldestToNewest(filteredData);
-            } else if (isSortedByAtoZ) {
-                sortedFilteredData = sortByAtoZ(filteredData);
-            } else {
-                // Default: newest to oldest
-                sortedFilteredData = sortByDateNewestToOldest(filteredData);
-            }
-            
-            setDisplayedData(sortedFilteredData);
+            setDisplayedData(filteredData);
         }
         setAnimationKey(prevKey => prevKey + 1);
-    }, [searchTerm, originalArrayData, isSortedByDate, isSortedByAtoZ, showAll, itemsToShow]);
+    }, [searchTerm, originalArrayData, isSortedByDate, showAll, itemsToShow]);
 
     const isJobExpired = (job) => {
         if (!job.expireDate) return false;
@@ -297,48 +223,38 @@ const Vacancies = () => {
     const toggleSortByDate = () => {
         if (originalArrayData.length === 0) return;
 
-        // Reset A-Z sorting when date sorting is activated
-        if (isSortedByAtoZ) {
-            setIsSortedByAtoZ(false);
-        }
-
         if (isSortedByDate) {
-            // Currently showing oldest to newest, turn off sorting (back to default: newest to oldest)
-            const sortedData = sortByDateNewestToOldest(originalArrayData);
-            const limitedData = showAll ? sortedData : sortedData.slice(0, itemsToShow);
-            setDisplayedData(limitedData);
+            setDisplayedData(originalArrayData.slice(0, itemsToShow));
             setIsSortedByDate(false);
         } else {
-            // Currently showing default (newest to oldest), switch to oldest to newest
-            const sortedData = sortByDateOldestToNewest(originalArrayData);
-            const limitedData = showAll ? sortedData : sortedData.slice(0, itemsToShow);
-            setDisplayedData(limitedData);
+            const firstItem = originalArrayData.find(item => item.id === 0) || originalArrayData[0];
+            const otherItems = originalArrayData.filter(item => item.id !== 0);
+
+            const monthNames = {
+                'Yanvar': 1, 'Fevral': 2, 'Mart': 3, 'Aprel': 4, 'May': 5, 'Iyun': 6,
+                'Iyul': 7, 'Avqust': 8, 'Sentyabr': 9, 'Oktyabr': 10, 'Noyabr': 11, 'Dekabr': 12,
+                'January': 1, 'February': 2, 'March': 3, 'April': 4, 'Mays': 5, 'June': 6,
+                'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12
+            };
+
+            const sortedItems = [...otherItems].sort((a, b) => {
+                if (!a.date || !b.date) return 0;
+
+                const parseDate = (dateStr) => {
+                    const parts = dateStr.replace(',', '').split(' ');
+                    if (parts.length < 3) return new Date();
+
+                    const [day, monthStr, year] = parts;
+                    const month = monthNames[monthStr];
+                    return new Date(year, month - 1, day);
+                };
+
+                return parseDate(b.date) - parseDate(a.date);
+            });
+
+            const limitedSortedItems = showAll ? sortedItems : sortedItems.slice(0, itemsToShow - 1);
+            setDisplayedData([firstItem, ...limitedSortedItems]);
             setIsSortedByDate(true);
-        }
-        setAnimationKey(prevKey => prevKey + 1);
-    };
-
-    // ADDED: A-Z sorting function
-    const toggleSortByAtoZ = () => {
-        if (originalArrayData.length === 0) return;
-
-        // Reset date sorting when A-Z sorting is activated
-        if (isSortedByDate) {
-            setIsSortedByDate(false);
-        }
-
-        if (isSortedByAtoZ) {
-            // Turn off A-Z sorting (back to default: newest to oldest)
-            const sortedData = sortByDateNewestToOldest(originalArrayData);
-            const limitedData = showAll ? sortedData : sortedData.slice(0, itemsToShow);
-            setDisplayedData(limitedData);
-            setIsSortedByAtoZ(false);
-        } else {
-            // Activate A-Z sorting
-            const sortedData = sortByAtoZ(originalArrayData);
-            const limitedData = showAll ? sortedData : sortedData.slice(0, itemsToShow);
-            setDisplayedData(limitedData);
-            setIsSortedByAtoZ(true);
         }
         setAnimationKey(prevKey => prevKey + 1);
     };
@@ -363,31 +279,59 @@ const Vacancies = () => {
         if (originalArrayData.length === 0) return;
 
         if (showAll) {
-            // Show less
-            if (isSortedByDate) {
-                const sortedData = sortByDateOldestToNewest(originalArrayData);
-                setDisplayedData(sortedData.slice(0, itemsToShow));
-            } else if (isSortedByAtoZ) {
-                const sortedData = sortByAtoZ(originalArrayData);
-                setDisplayedData(sortedData.slice(0, itemsToShow));
-            } else {
-                // Default: newest to oldest
-                const sortedData = sortByDateNewestToOldest(originalArrayData);
-                setDisplayedData(sortedData.slice(0, itemsToShow));
-            }
+            setDisplayedData(isSortedByDate ?
+                [originalArrayData.find(item => item.id === 0) || originalArrayData[0],
+                ...originalArrayData.filter(item => item.id !== 0)
+                    .sort((a, b) => {
+                        if (!isSortedByDate) return 0;
+
+                        const monthNames = {
+                            'Yanvar': 1, 'Fevral': 2, 'Mart': 3, 'Aprel': 4, 'May': 5, 'Iyun': 6,
+                            'Iyul': 7, 'Avqust': 8, 'Sentyabr': 9, 'Oktyabr': 10, 'Noyabr': 11, 'Dekabr': 12,
+                            'January': 1, 'February': 2, 'March': 3, 'April': 4, 'Mays': 5, 'June': 6,
+                            'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12
+                        };
+
+                        const parseDate = (dateStr) => {
+                            const parts = dateStr.replace(',', '').split(' ');
+                            if (parts.length < 3) return new Date();
+
+                            const [day, monthStr, year] = parts;
+                            const month = monthNames[monthStr];
+                            return new Date(year, month - 1, day);
+                        };
+
+                        return parseDate(b.date) - parseDate(a.date);
+                    }).slice(0, itemsToShow - 1)] :
+                originalArrayData.slice(0, itemsToShow)
+            );
         } else {
-            // Show all
-            if (isSortedByDate) {
-                const sortedData = sortByDateOldestToNewest(originalArrayData);
-                setDisplayedData(sortedData);
-            } else if (isSortedByAtoZ) {
-                const sortedData = sortByAtoZ(originalArrayData);
-                setDisplayedData(sortedData);
-            } else {
-                // Default: newest to oldest
-                const sortedData = sortByDateNewestToOldest(originalArrayData);
-                setDisplayedData(sortedData);
-            }
+            setDisplayedData(isSortedByDate ?
+                [originalArrayData.find(item => item.id === 0) || originalArrayData[0],
+                ...originalArrayData.filter(item => item.id !== 0)
+                    .sort((a, b) => {
+                        if (!isSortedByDate) return 0;
+
+                        const monthNames = {
+                            'Yanvar': 1, 'Fevral': 2, 'Mart': 3, 'Aprel': 4, 'May': 5, 'Iyun': 6,
+                            'Iyul': 7, 'Avqust': 8, 'Sentyabr': 9, 'Oktyabr': 10, 'Noyabr': 11, 'Dekabr': 12,
+                            'January': 1, 'February': 2, 'March': 3, 'April': 4, 'Mays': 5, 'June': 6,
+                            'July': 7, 'August': 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12
+                        };
+
+                        const parseDate = (dateStr) => {
+                            const parts = dateStr.replace(',', '').split(' ');
+                            if (parts.length < 3) return new Date();
+
+                            const [day, monthStr, year] = parts;
+                            const month = monthNames[monthStr];
+                            return new Date(year, month - 1, day);
+                        };
+
+                        return parseDate(b.date) - parseDate(a.date);
+                    })] :
+                originalArrayData
+            );
         }
         setShowAll(!showAll);
         setAnimationKey(prevKey => prevKey + 1);
